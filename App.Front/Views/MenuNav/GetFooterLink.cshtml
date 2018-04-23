@@ -1,0 +1,32 @@
+﻿<!----GetFooterLink-->
+
+@using App.Aplication
+@using App.FakeEntity.Menu
+@model IEnumerable<MenuNavViewModel>
+@if (Model.IsAny())
+{
+    int i = 0;
+
+    foreach (MenuNavViewModel lv1 in Model)
+    {
+        <div class="col-sm-4">
+            <div class="introduce-title"><a href="@Url.Action("GetContent", "Menu", new { menu = lv1.SeoUrl, area = "" })"> @lv1.MenuName</a></div>
+            <ul id="introduce-Account" class="introduce-list">
+                @foreach (var lv2 in lv1.ChildNavMenu)
+                {
+                    if (!string.IsNullOrEmpty(lv2.OtherLink))
+                    {
+                        <li><a href="@lv2.OtherLink">@lv2.MenuName</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("GetContent", "Menu", new { menu = lv2.SeoUrl, area = "" })">@lv2.MenuName</a></li>
+                    }
+                    i++;
+                }
+            </ul>
+        </div>
+    }
+}
+
+<!----/GetFooterLink-->

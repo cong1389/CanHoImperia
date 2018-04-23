@@ -1,0 +1,122 @@
+﻿<!-- Home slideder-->
+@{Html.RenderAction("SlideShowHome", "SlideShow"); }
+<!-- END Home slideder-->
+
+@{ Html.RenderAction("PostDiscountSlide", "Post", new { area = "" });}
+
+<div class="content-page">
+    <div class="container">
+        @{
+            Html.RenderAction("PostHome", "Post", new { MenuId = 15, area = "" });
+        }
+    </div>
+</div>
+
+<div id="content-wrap">
+    <div class="container">
+        @{
+            Html.RenderAction("BannerHomeProduct", "Banner", new { area = "" });
+            Html.RenderAction("GetHomeNews", "News", new { area = "" });
+        }
+
+        <!-- service 2 -->
+        <div class="services2">
+            <ul>
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+                    <div class="service-wapper">
+                        <div class="row">
+                            <div class="col-sm-6 image">
+                                <div class="icon">
+                                    <img src="/assets/255/1000074255/1000138323/icon-s18e0e.png?v=8" alt="service">
+                                </div>
+                                <h3 class="title"><a href="1.html">Giá trị lớn</a></h3>
+                            </div>
+                            <div class="col-sm-6 text">
+                                Chúng tôi cung cấp giá cả cạnh tranh nhất trên từng sản phẩm, phù hợp với mọi túi tiền.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+                    <div class="service-wapper">
+                        <div class="row">
+                            <div class="col-sm-6 image">
+                                <div class="icon">
+                                    <img src="/assets/255/1000074255/1000138323/icon-s28e0e.png?v=8" alt="service">
+                                </div>
+                                <h3 class="title"><a href="3.html">Giao hàng</a></h3>
+                            </div>
+                            <div class="col-sm-6 text">
+                                Giao hàng tận nơi, sản phẩm sẽ có mặt tại nhà bạn từ 3 đến 5 ngày làm việc.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+                    <div class="service-wapper">
+                        <div class="row">
+                            <div class="col-sm-6 image">
+                                <div class="icon">
+                                    <img src="/assets/255/1000074255/1000138323/icon-s38e0e.png?v=8" alt="service">
+                                </div>
+                                <h3 class="title"><a href="5.html">Sản phẩm</a></h3>
+                            </div>
+                            <div class="col-sm-6 text">
+                                Sản phẩm chính hãng, bảo hành trên toàn quốc.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+                    <div class="service-wapper">
+                        <div class="row">
+                            <div class="col-sm-6 image">
+                                <div class="icon">
+                                    <img src="/assets/255/1000074255/1000138323/icon-s48e0e.png?v=8" alt="service">
+                                </div>
+                                <h3 class="title"><a href="2.html">Hổ trợ</a></h3>
+                            </div>
+                            <div class="col-sm-6 text">
+                                Hổ trợ 24/7.
+                                <br> Phone: +83 93 939 399.<br> Emal: hi@haavan.com
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+                    <div class="service-wapper">
+                        <div class="row">
+                            <div class="col-sm-6 image">
+                                <div class="icon">
+                                    <img src="/assets/255/1000074255/1000138323/icon-s58e0e.png?v=8" alt="service">
+                                </div>
+                                <h3 class="title"><a href="4.html">Ứng dụng</a></h3>
+                            </div>
+                            <div class="col-sm-6 text">
+                                Cài đặc ứng dụng khi mua hàng sẽ được giảm giá đặc biệt từ 5 đến 10%.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+                    <div class="service-wapper">
+                        <div class="row">
+                            <div class="col-sm-6 image">
+                                <div class="icon">
+                                    <img src="/assets/255/1000074255/1000138323/icon-s68e0e.png?v=8" alt="service">
+                                </div>
+                                <h3 class="title"><a href="6.html">Thanh toán</a></h3>
+                            </div>
+                            <div class="col-sm-6 text">
+                                Thanh toán khi nhận hàng.
+                                <br> Phương thức thanh toán đa dạng
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- ./service 2 -->
+
+    </div>
+</div>

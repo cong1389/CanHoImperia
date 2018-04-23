@@ -1,0 +1,22 @@
+﻿<!---MenuHomeSlide-->
+@using App.Aplication
+@model IEnumerable<App.FakeEntity.Menu.MenuNavViewModel>
+
+@if (Model.IsAny())
+{
+    <ul class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
+        @foreach (var item in Model)
+        {
+            if (!string.IsNullOrEmpty(item.ImageUrl))
+            {
+                <li>
+                    <a href="@Url.Action("GetContent", "Menu", new {menu = item.SeoUrl, area = ""})">
+                        <img src="@item.ImageUrl.ValidateImage()" alt="@item.MenuName">
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+
+}
+<!---/MenuHomeSlide-->

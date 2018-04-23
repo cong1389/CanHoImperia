@@ -1,0 +1,38 @@
+﻿<!----GetTopMenu ---->
+@using App.FakeEntity.Menu
+@model IEnumerable<MenuNavViewModel>
+
+@if (Model != null)
+{
+    <div id="main-menu-new" class="col-sm-12 col-md-9 main-menu">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#new-menu" aria-expanded="false" aria-controls="navbar">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="#">MENU</a>
+                </div>
+                <div id="new-menu" class="navbar-collapse collapse">
+                    <ul class="t-menu nav">
+
+                        @{
+                            int i = 0;
+                            foreach (MenuNavViewModel item in Model)
+                            {
+                                string clasActive = i == 0 ? "active" : "";
+                                <li class="@clasActive">
+                                    <a class="current" href="@(item.OtherLink = item.OtherLink ?? Url.Action("GetContent", "Menu", new {menu = item.SeoUrl, area = ""}))" title="@item.MenuName" target="_self">
+                                        @item.MenuName
+                                    </a>
+                                </li>
+                                i++;
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+}
+<!----/GetTopMenu ---->

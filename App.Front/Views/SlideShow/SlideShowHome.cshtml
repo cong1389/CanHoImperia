@@ -1,0 +1,29 @@
+﻿<!--GetSlideShow -->
+@using App.Aplication
+@model IEnumerable<App.Domain.Entities.Slide.SlideShow>
+@if (Model.IsAny())
+{
+    <div id="home-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 slider-left"></div>
+                <div class="col-sm-9 header-top-right">
+                    <div class="homeslider">
+                        <ul id="contenhomeslider">
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <a href="@item.WebsiteLink">
+                                        <img src="@item.ImgPath.ValidateImage()" alt="@item.Title" />
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!--/GetSlideShow -->

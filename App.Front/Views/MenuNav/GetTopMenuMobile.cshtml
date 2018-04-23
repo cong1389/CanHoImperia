@@ -1,0 +1,34 @@
+﻿
+<!---GetTopMenuMobile-->
+@using App.FakeEntity.Menu
+@model IEnumerable<MenuNavViewModel>
+
+<a href="#menu-toggle" class="btn btn-default hidden-lg hidden-md" id="menu-toggle"><i></i></a>
+<!-- Page Content -->
+<div id="menu_xs" class='hidden-lg hidden-md'>
+    
+     @{Html.RenderAction("SearchMenuMobile", "SearchBox", new { area = "" });}
+
+    <ul class="sidebar-nav unstyled noleftpadding">
+        @foreach (MenuNavViewModel item in Model)
+            {
+            <li class=''>
+                <a href="@(item.OtherLink = item.OtherLink !=null? item.OtherLink : Url.Action("GetContent", "Menu", new {menu = item.SeoUrl , area = ""}) )" title="@item.MenuName" class='menu'>@item.MenuName<span>+</span></a>
+                <ul>
+                    @foreach (var lv1 in item.ChildNavMenu)
+                    {
+                        <li class=''>
+                            <a class='sub-menu' href="@Url.Action("GetContent", "Menu", new {menu = lv1.SeoUrl, area = ""})">
+                                <div>
+                                    @lv1.MenuName
+                                </div>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
+
+<!---/GetTopMenuMobile-->

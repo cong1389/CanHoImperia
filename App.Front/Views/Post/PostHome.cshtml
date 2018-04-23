@@ -1,0 +1,163 @@
+﻿<!----PostHome-->
+@using App.Aplication
+@using App.Domain.Entities.Data
+@using App.Domain.Entities.Menu
+@model App.Front.Models.Posts.CategoryPostModel
+
+@if (Model != null)
+{
+	int mnuIndex = 0;
+	foreach (MenuLink menuLink in Model.MenuLinks)
+	{
+		mnuIndex++;
+		var postCurrents = Model.Posts.Where(x => x.VirtualCategoryId.Contains(menuLink.CurrentVirtualId));
+
+		var postRights = postCurrents.Take(3);
+		var postFullBoxs = postCurrents.Skip(3).Take(5);
+		var manufactorers = postCurrents.Select(x => x.Manufacturer).Distinct();
+
+		<div class="category-featured jewelry">
+			<nav class="navbar nav-menu show-brand">
+				<div class="container">
+					<div class="navbar-brand" style="background: @(menuLink.ColorHex)">
+						<a href="@Url.Action("GetContent", "Menu" , new {menu=menuLink.SeoUrl, area="" })">
+							<img alt="@menuLink.MenuName" src="@menuLink.ImageMediumSize.ValidateImage()" /> @menuLink.MenuName
+						</a>
+					</div>
+					<span class="toggle-menu"></span>
+					<div class="collapse navbar-collapse" style="border-bottom: 2px solid @(menuLink.ColorHex)">
+						@RenderManufacturer(mnuIndex, manufactorers)
+					</div>
+				</div>
+
+				<div id="elevator-@mnuIndex" class="floor-elevator">
+					<a href="#elevator-@(mnuIndex - 1)" class="btn-elevator up fa fa-angle-up @(mnuIndex == 1 ? " disabled" : "" )"></a>
+					<a href="#elevator-@(mnuIndex + 1)" class="btn-elevator down fa fa-angle-down @(mnuIndex == Model.NumberMenu ? " disabled" : "" )"></a>
+				</div>
+			</nav>
+			<div class="product-featured clearfix">
+				<div class="row">
+					<div class="col-sm-2 sub-category-wapper">
+						@Html.Action("MenuNavLeft", "MenuNav", new { virtualId = menuLink.VirtualId, area = "" })
+					</div>
+					<div class="col-sm-10 col-right-tab">
+						<div class="product-featured-tab-content">
+							<div class="tab-container">
+								@{
+									int mfIndex = 0;
+									foreach (var manufacturer in manufactorers)
+									{
+										mfIndex++;
+										<div class="tab-panel @(mfIndex==1?"active":"")" id="tab-@string.Format("{0}_{1}", mnuIndex, mfIndex)">
+											<div class="box-left">
+												@{
+													Html.RenderAction("MenuHomeSlide", "MenuNav", new { virtualId = menuLink.VirtualId, area = "" });
+												}
+											</div>
+											<div class="box-right">
+												<ul class="product-list row">
+													@foreach (var post in postRights.Where(x => x.ManufacturerId == manufacturer.Id))
+													{
+														Html.Raw(post.ManufacturerId);
+														<li class="col-sm-4">@RenderPostBlock(post)</li>
+													}
+												</ul>
+											</div>
+											<div class="box-full clearfix">
+												<ul class="product-list">
+													@foreach (var post in postFullBoxs.Where(x => x.ManufacturerId == manufacturer.Id))
+													{
+														<li>@RenderPostBlock(post)</li>
+													}
+												</ul>
+											</div>
+										</div>
+									}
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+
+	@helper RenderPostBlock(Post post)
+		{
+			<div class="left-block">
+				<a href="@Url.Action("PostDetail", "Post" , new {seoUrl=post.SeoUrl, area="" })">
+					<img class="img-responsive" alt="@post.Title" src="@post.ImageMediumSize.ValidateImage()" />
+				</a>
+				@if (post.Discount.HasValue && !post.OutOfStock)
+				{
+					<span class="price-percent">
+						Sale
+						<br>
+						- @Html.Raw(post.Discount.FormatPersent())
+					</span>
+				}
+			</div>
+			<div class="right-block">
+				<h5 class="product-name">
+					<a href="@Url.Action("PostDetail", "Post" , new {seoUrl=post.SeoUrl, area="" })" title="@post.Title">
+						@post.Title
+					</a>
+				</h5>
+				<div class="content_price">
+					@if (!post.OutOfStock)
+					{
+						<span class="price product-price">
+							@if (post.Price.HasValue && post.Discount.HasValue)
+							{
+								@Html.Raw((post.Price - post.Price * post.Discount / 100).FormatPrice())
+							}
+							else if (post.Price.HasValue && !post.Discount.HasValue)
+							{
+								@Html.Raw(post.Price.FormatPrice())
+							}
+							else
+							{
+								@Html.Raw("LienHeDatHang.Lable")
+							}
+						</span>
+						if (post.Discount.HasValue)
+						{
+							<span class="price old-price">@Html.Raw(post.Price.FormatPrice()) </span>
+						}
+					}
+					else
+					{
+						<h5 class="product-name">
+							<span class="label label-danger">Hết hàng</span>
+						</h5>
+					}
+				</div>
+			</div>
+
+}
+
+	@helper RenderManufacturer(int mnuIndex, IEnumerable<Manufacturer> manufacturers)
+		{
+			if (manufacturers.IsAny())
+			{
+				int mfIndex = 0;
+				<ul class="nav navbar-nav">
+					@foreach (var manufacturer in manufacturers)
+					{
+						mfIndex++;
+
+						<li class="@(mfIndex==1?"active":"")">
+							<a data-toggle="tab" href="#tab-@(string.Format("{0}_{1}", mnuIndex, mfIndex))">@manufacturer.Title</a>
+						</li>
+					}
+				</ul>
+			}
+}
+}
+else
+{
+	<p class="text-danger">
+		Nội dung đang cập nhật
+	</p>
+}
+<!----/PostHome-->

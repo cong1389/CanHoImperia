@@ -1,0 +1,25 @@
+﻿<!----BannerHomeProduct-->
+@using App.Aplication
+@model IEnumerable<App.Domain.Entities.Ads.Banner>
+
+@if (Model.IsAny())
+{
+    int index = 0;
+    <!-- Baner bottom -->
+    <div class="row banner-bottom">
+
+        @foreach (var banner in Model)
+        {
+            index++;
+            <div class="col-sm-6 @(index % 2 > 0 ? "item-left" : "item-right") ">
+                <div class="banner-boder-zoom">
+                    <a href="@banner.WebsiteLink" title="@banner.WebsiteLink">
+                        <img alt="@banner.Title" class="img-responsive" src="@banner.ImgPath.ValidateImage()" />
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- end banner bottom -->
+}
+<!----/BannerHomeProduct-->

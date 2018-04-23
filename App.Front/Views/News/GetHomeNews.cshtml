@@ -1,0 +1,41 @@
+﻿<!---GetHomeNews--->
+@using App.Aplication
+@model IEnumerable<App.Domain.Entities.Data.News>
+
+@if (Model.IsAny())
+{
+    <div class="blog-list">
+        <h2 class="page-heading">
+            <span class="page-heading-title">@T("ThongTinTruyenThong")</span>
+        </h2>
+        <div class="blog-list-wapper">
+            <ul class="owl-carousel" data-dots="false" data-loop="true" data-nav="true" data-margin="30" data-autoplaytimeout="1000" data-autoplayhoverpause="true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":4}}'>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <div class="post-thumb image-hover2">
+                            <a href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})" title="@item.Title">
+                                <img src="@item.ImageMediumSize.ValidateImage()" alt='@item.Title'>
+                            </a>
+                        </div>
+                        <div class="post-desc">
+                            <h5 class="post-title">
+                                <a href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})">
+                                    @item.Title
+                                </a>
+                            </h5>
+                            <div class="post-meta">
+                                <span class="date">@item.CreatedDate.ToString("dd/MM/yyyy")</span>
+                            </div>
+                            <div class="readmore">
+                                <a href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})">Xem thêm</a>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+<!---/GetHomeNews--->

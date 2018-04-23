@@ -1,0 +1,58 @@
+﻿<!---Header--->
+
+<div id="header" class="header">
+
+    @{Html.RenderAction("GetTopHead", "MenuNav", new { area = "" });}
+
+    <!-- MAIN HEADER -->
+    <div class="container main-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 logo">
+                @Html.Action("GetLogo", "Summary", new { area = "" })
+            </div>
+            <div class="col-xs-7 col-sm-7 header-search-box">
+                @{Html.RenderAction("SearchMenu", "SearchBox", new { area = "" });}
+            </div>
+
+            <div class="col-xs-5 col-sm-2 group-button-header new-login ">
+                <div id="top-cart"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- END MANIN HEADER -->
+    <div id="nav-top-menu" class="nav-top-menu">
+        <div class="container">
+            <div class="row">
+                @Html.Action("GetMenuVerticalMega", "MenuNav", new { area = "" })
+                @Html.Action("GetTopMenu", "MenuNav", new { area = "" })
+            </div>
+            <!-- userinfo on top-->
+            <div id="form-search-opntop">
+            </div>
+            <!-- userinfo on top-->
+            <div id="user-info-opntop"></div>
+            <!-- CART ICON ON MMENU -->
+	        <div id="shopping-cart-box-ontop">
+		        <a href="@Url.Action("Cart","ShoppingCart")">  <i class="fa fa-shopping-cart"></i></a>
+		        <div class="shopping-cart-box-ontop-content"></div>
+	        </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function ViewPopupCart() {
+        jQuery.post('/shoppingcart/GetPopupCart')
+            .done(function (data) {
+                jQuery("#top-cart").html(data.list);
+            });
+    }
+
+    jQuery(document).ready(function () {
+        ViewPopupCart();
+    });
+
+</script>
+<!---/Header--->

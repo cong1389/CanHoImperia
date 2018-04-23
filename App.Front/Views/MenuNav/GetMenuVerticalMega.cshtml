@@ -1,0 +1,45 @@
+﻿<!---GetMenuVerticalMega--->
+@using App.Aplication
+@model IEnumerable<App.FakeEntity.Menu.MenuNavViewModel>
+
+@if (Model != null)
+{
+    <div class="col-sm-3" id="box-vertical-megamenus">
+        <div class="box-vertical-megamenus">
+            <h4 class="title">
+                <span class="title-menu">Danh mục sản phẩm</span>
+                <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
+            </h4>
+            <div class="vertical-menu-content is-home @(Utils.IsHomePage() ? "" : "no-home")">
+                <ul class="vertical-menu-list">
+                    @foreach (var item in Model)
+                    {
+                        <li class="" int="3">
+                            <a class="parent " href="@Url.Action("GetContent","Menu",new {menu = item.SeoUrl, area = "" })">
+                                <img class="icon-menu" alt="@item.MenuName" src="@item.IconNav.ValidateImage()">@item.MenuName
+                            </a>
+                            @if (item.ChildNavMenu != null && item.ChildNavMenu.Any())
+                            {
+                                <div class="vertical-dropdown-menu">
+                                    <div class="vertical-groups col-sm-12">
+                                        <div class="mega-group col-sm-3">
+                                            <div class="row mega-products">
+                                                <ul class="group-link-default" style="padding-left: 15px;">
+                                                    @foreach (var child in item.ChildNavMenu)
+                                                    {
+                                                        <li><a href="@Url.Action("GetContent","Menu",new {menu = child.SeoUrl, area = "" })">@child.MenuName</a></li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+<!---/GetMenuVerticalMega--->
