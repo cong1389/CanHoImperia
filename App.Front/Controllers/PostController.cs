@@ -17,6 +17,7 @@ using App.Front.Extensions;
 using App.Front.Models;
 using App.Front.Models.Posts;
 using App.Service.Common;
+using App.Service.ContactInformation;
 using App.Service.Gallery;
 using App.Service.GenericControl;
 using App.Service.Language;
@@ -33,6 +34,7 @@ namespace App.Front.Controllers
         private readonly IMenuLinkService _menuLinkService;
 
         private readonly IGalleryService _galleryService;
+        private readonly IContactInfoService _contactInfoService;
 
         public PostController(
             IPostService postService
@@ -40,11 +42,12 @@ namespace App.Front.Controllers
             , IGalleryService galleryService
              , IWorkContext workContext
             , IGenericControlService genericControlService
-            , ICacheManager cacheManager)
+            , ICacheManager cacheManager, IContactInfoService contactInfoService)
         {
             _postService = postService;
             _menuLinkService = menuLinkService;
             _galleryService = galleryService;
+            _contactInfoService = contactInfoService;
         }
 
         //[PartialCache("Short")]
@@ -278,7 +281,7 @@ namespace App.Front.Controllers
         [PartialCache("Long")]
         public ActionResult PostHot()
         {
-            var tops = _postService.GetTop(5, x => x.Status == (int)Status.Enable && (x.ProductHot || x.ProductNew));
+            var tops = _postService.GetTop(30, x => x.Status == (int)Status.Enable && (x.ProductHot || x.ProductNew));
 
             return PartialView(tops);
         }
@@ -520,19 +523,7 @@ namespace App.Front.Controllers
 
             return View(posts);
         }
-
-        //Hien thi san pham footer
-        [PartialCache("Medium")]
-        public JsonResult PostOutOfStock()
-        {
-            var post = _postService.GetTop(6, x => x.Status == (int)Status.Enable && x.OutOfStock);
-
-            var jsonResult = Json(new {success = true, list = this.RenderRazorViewToString("_Footer.Product", post)},
-                JsonRequestBehavior.AllowGet);
-
-            return jsonResult;
-        }
-
+        
         #region Post discount
 
         [ChildActionOnly]
@@ -592,5 +583,25 @@ namespace App.Front.Controllers
         }
 
         #endregion
+
+
+        [PartialCache("Long")]
+        public JsonResult GetContactAddress()
+        {
+            var contactInformation = _contactInfoService.GetTypeAddress((int)TypeAdress.Current);
+
+            var contactInformationLocalize = contactInformation.ToModel();
+
+            var jsonResult =
+                Json(
+                    new
+                    {
+                        success = true,
+                        list = this.RenderRazorViewToString("_PostDetail.Address", contactInformationLocalize)
+                    }, JsonRequestBehavior.AllowGet);
+
+            return jsonResult;
+
+        }
     }
 }

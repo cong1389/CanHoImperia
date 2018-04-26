@@ -4,11 +4,10 @@
 
 @if (Model != null)
 {
-    <a href="@Url.Action("Index", "Home", new { area = "" })" title='@Model.Title' >
-        <img alt="@Model.Title" src="@Model.LogoImage.ValidateImage()" />
-    </a>
-    <h1 style="display: none;">
-        kute-shop
-    </h1>
+	<div class="mkdf-logo-wrapper">
+		<a itemprop="url" href="@Url.Action("Index", "Home", new { area = "" })" title='@Model.Title' style="height: 120px;">
+			<img class="mkdf-normal-logo" src="@Model.LogoImage.ValidateImage()"  height="150" alt="@Model.Title " />
+		</a>
+	</div>
 }
 <!---/GetLogo--->

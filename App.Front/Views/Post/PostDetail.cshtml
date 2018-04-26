@@ -6,408 +6,88 @@
 
 @if (Model != null)
 {
-	<div class="columns-container">
-		<div class="container" id="columns">
-			@{
-				Html.RenderPartial("_BreadCrumb");
-			}
 
-			<!-- row -->
-			<div class="row">
-				<!-- Left colunm -->
-				<div class="column col-xs-12 col-sm-3" id="left_column">
-					<!-- block best sellers -->
-					@{
-						Html.RenderAction("PostHot", "Post");
-					}
-					<!-- ./block best sellers  -->
-					<!-- block category -->
-					<div class="block left-module">
-						<p class="title_block">Danh mục</p>
-						<div class="block_content">
-							<!-- layered -->
-							<div class="layered layered-category">
-								<div class="layered-content">
-									@Html.Action("GetMenuLinkSideBar", "MenuNav", new { area = "", virtualId = Model.MenuLink.VirtualId, proAttrs = ViewBag.ProAttrs })
-								</div>
-							</div>
-							<!-- ./layered -->
-						</div>
-					</div>
-					<!-- ./block category  -->
-					@{
-						Html.RenderAction("PostDiscountBlock", "Post");
-					}
+	@Html.Action("BannerTop", "Banner", new { menuId = ViewBag.BannerId, postTitle = ViewBag.Title })
 
+	<div class="mkdf-container">
+		<div class="mkdf-container-inner clearfix">
+			<div class="mkdf-grid-row">
+				<div class="mkdf-sidebar-holder mkdf-grid-col-3">
+					@Html.Action("SearchBoxSideBar", "SearchBox", new
+					{
+						area = "",
+						productOld = ViewBag.ProductOld,
+						productNew = ViewBag.ProductNew,
+						attributes = ViewBag.Attributes,
+						prices = ViewBag.Prices,
+						proAttrs = ViewBag.ProAttributes,
+						virtualId = ViewBag.VirtualId
+					})
 				</div>
-				<!-- ./left colunm -->
-				<!-- Center colunm-->
-				<div class="center_column col-xs-12 col-sm-9" id="center_column">
-					<!-- Product -->
-					<div id="product">
-						<form method="post" id="ProductDetailsForm" action="" crossorigin="anonymous">
-							<div class="primary-box row">
-								<div class="pb-left-column col-xs-12 col-sm-6">
-									<!-- product-imge-->
-									<div class="product-image text-center">
-										<div id="gallery" class="royalSlider rsDefault">
-											@if (Model.GalleryImages.IsAny())
-											{
-												foreach (var item in Model.GalleryImages)
-												{
-													<a class="rsImg" data-rsBigImg="@Url.Content("~/" + item.ImageBig)" href="@Url.Content("~/" + item.ImageBig)">
-														<img width="195" height="350" class="rsTmb" src="@item.ImageThumbnail.ValidateImage()" />
-													</a>
-												}
-											}
-											else
-											{
-												<a class="rsImg" data-rsBigImg="@Url.Content("~/" + Model.ImageBigSize)" href="@Url.Content("~/" + Model.ImageBigSize)">
-													<img width="195" height="350" class="rsTmb" src="@Model.ImageSmallSize.ValidateImage()" />
-												</a>
-											}
-										</div>
+				<div class="mkdf-page-content-holder mkdf-grid-col-9">
+					<div class="mkdf-blog-holder mkdf-blog-single mkdf-blog-single-standard">
+						<article id="post-164" class="post-164 post type-post status-publish format-gallery has-post-thumbnail hentry category-advertising tag-design tag-interior post_format-post-format-gallery">
+							<div class="mkdf-post-content">
+								<div class="mkdf-post-heading">
 
-									</div>
-									<!-- product-imge-->
-								</div>
-								<div class="pb-right-column col-xs-12 col-sm-6">
-									<h1 class="product-name">@Model.Title</h1>
-									<p class="sku">Mã sản phẩm:@Model.ProductCode</p>
-									<p class="sku">Nhà sản xuất:@Model.Manufacturer.Title</p>
-									@RenderPrice(Model)
-
-									<div class="info-orther">
-
-										<p class="tt">
-											Tình trạng:
-											@if (Model.OutOfStock)
+									<div class="mkdf-post-image">
+										<div class="mkdf-blog-gallery mkdf-owl-slider">
+											@foreach (var item in Model.PostGallerys)
 											{
-												<span class="label label-danger">Hết hàng</span>
-											}
-											else
-											{
-												<span class="label label-success">Còn hàng</span>
-											}
-										</p>
-									</div>
-
-									@if (Model.MenuLink.TemplateType == (int)TemplateContent.Product)
-									{
-										int i = 0;
-										<div class="product-attr">
-											@foreach (var item in Model.AttributeValues.Select(x => x.Attribute).Distinct().ToList())
-											{
-												<div class="action product-desc">
-													<label>@item.AttributeName</label>
-													<div class="conten-attr">
-														@foreach (var at in Model.AttributeValues.Where(x => x.AttributeId == item.Id))
-														{
-															string activeClass = "active";
-															if (i > 0)
-															{
-																activeClass = string.Empty;
-															}
-															i += 1;
-															<div class="item @activeClass">
-																@if (!string.IsNullOrEmpty(at.ColorHex))
-																{
-																	<div class="select-item">
-																		<label>
-																			<input data-post="@Model.Id" type="checkbox" name="color" value="@at.Id" data-id="@Model.Id" />
-																			<span class="bg" style="background-color: @at.ColorHex"></span>
-																			<span>@at.ValueName</span>
-																		</label>
-																	</div>
-																}
-																else
-																{
-																	<div class="select-item size">
-																		<label>
-																			<input data-post="@Model.Id" type="checkbox" name="color" value="@at.Id" data-id="@Model.Id" />
-																			<span>@at.ValueName</span>
-																		</label>
-																	</div>
-																}
-															</div>
-														}
-													</div>
+												<div>
+													<img width="1300" height="813"
+														 src="@item.ImageBigSize.ValidateImage()"
+														 class="attachment-full size-full" alt="a"
+														 srcset="@item.ImageBigSize.ValidateImage() 1300w
+														 ,@item.ImageBigSize.ValidateImage() 300w
+														 ,@item.ImageBigSize.ValidateImage() 768w
+														 ,@item.ImageBigSize.ValidateImage()1024w" sizes="(max-width: 1300px) 100vw, 1300px" />
 												</div>
 											}
-										</div>
-									}
-									@if (!Model.OutOfStock)
-									{
-										<div class="action product-desc">
-											<div class="select-wrapper">
-												<label>Số lượng</label>
-												<input id="quantity" type="number" name="quantity" min="1" value="1" class="tc item-quantity">
-											</div>
-										</div>
-
-										<div class="action-cart">
-											<a href="javascript:;" class="addToCart btn-cart add-cart">Thêm vào giỏ</a>
-										</div>
-									}
-									else
-									{
-										<div class="action-cart">
-											<a href="javascript:;" class="addToCart btn-cart add-cart">Vui lòng liên hệ</a>
-										</div>
-									}
-								</div>
-							</div>
-						</form>
-
-						<!-- tab product -->
-						<div class="product-tab">
-							<ul class="nav-tab">
-								<li class="active">
-									<a aria-expanded="false" data-toggle="tab" href="#product-detail">Chi tiết sản phẩm</a>
-								</li>
-
-								<li>
-									<a aria-expanded="true" data-toggle="tab" href="#information">Bình luận</a>
-								</li>
-
-							</ul>
-							<div class="tab-container">
-								<div id="product-detail" class="tab-panel active">
-									<div id="divAttribute"></div>
-
-									<h2>THÔNG TIN CHI TIẾT</h2>
-									@Html.Raw(Model.Description)
-
-								</div>
-
-								<div id="information" class="tab-panel">
-									<div id="binhluan">
-										<div class="container-fluid">
 
 										</div>
 									</div>
 								</div>
+								<div class="mkdf-post-text">
+									<div class="mkdf-post-text-inner">
+										<div class="mkdf-post-info-top">
+											<div itemprop="dateCreated" class="mkdf-post-info-date entry-date published updated">
+												<a itemprop="url" href="http://zuhaus.mikado-themes.com/2017/10/">
 
+													@Model.CreatedDate.ToString("dd/MM/yyyy")
+												</a>
+												<meta itemprop="interactionCount" content="UserComments: 2">
+											</div>
+										</div>
+										<div class="mkdf-post-text-main">
+
+											<h3 itemprop="name" class="entry-title mkdf-post-title">
+												@Html.Raw(Model.Title)
+											</h3>
+											<div class="vc_row wpb_row vc_row-fluid vc_custom_1510672701103">
+												<div class="wpb_column vc_column_container vc_col-sm-12">
+													<div class="vc_column-inner ">
+														<div class="wpb_wrapper">
+															@Html.Raw(Model.Description)
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
 							</div>
-						</div>
-						<!-- ./tab product -->
-						<!-- box product -->
+						</article>	
+					
 						@Html.Action("PostRelative", "Post", new { area = "", virtualId = Model.MenuLink.VirtualId, productId = Model.Id })
+
 					</div>
-					<!-- Product -->
 				</div>
-				<!-- ./ Center colunm -->
+
 			</div>
-			<!-- ./row-->
 		</div>
 	</div>
-}
-
-@helper RenderPrice(Post post)
-	{
-		if (post.OutOfStock)
-		{
-			return;
-		}
-
-		var galleryImages = post.GalleryImages;
-		if (!galleryImages.IsAny())
-		{
-			<div class="product-price-group">
-				<span class="price"> @post.Price.FormatPrice()</span>
-			</div>
-			@Html.Hidden("hddPrice", post.Price.ToString())
-			return;
-		}
-
-		var attrid = post.AttributeValues.FirstOrDefault();
-		if (attrid != null)
-		{
-			var gallery = post.GalleryImages.FirstOrDefault(x =>
-			 x.AttributeValueId == attrid.Id);
-			decimal? price = null;
-			<div class="product-price-group">
-				@if (gallery != null && gallery.Price != null)
-				{
-					if (post.Price.HasValue && post.Discount.HasValue)
-					{
-						price = gallery.Price - gallery.Price * post.Discount / 100;
-						<span class="price"> @Html.Raw((gallery.Price - gallery.Price * post.Discount / 100).FormatPrice())</span>
-					}
-					else if (post.Price.HasValue && !post.Discount.HasValue)
-					{
-						price = gallery.Price;
-						<span class="price"> @Html.Raw(price.FormatPrice())</span>
-					}
-				}
-				else
-				{
-					<span class="text text-danger">@T("LienHeDatHang.Lable")</span>
-				}
-				@Html.Hidden("hddPrice", price.ToString())
-
-				@if (post.Price.HasValue && post.Discount.HasValue)
-				{
-					<div style="" class="saleoff-price-item">
-						<span class="price-label">Tiết kiệm:</span>
-						<span id="product-discount" class="product-discount">@post.Discount%</span>
-						<span id="span-saving-price" class="discount"> @Html.Raw((gallery.Price * post.Discount / 100).FormatPrice()) </span>
-					</div>
-					<div class="old-price-item">
-						<span class="price-label">Giá thị trường:</span>
-						<span id="span-list-price"> @gallery.Price.FormatPrice()</span>
-					</div>
-				}
-			</div>
-		}
-
-}
-
-@section stylesheets
-{
-	<link href="~/Content/royalslider/royalslider.min.css" rel="stylesheet" />
-	<link href="~/Content/royalslider/rs-default.css" rel="stylesheet" />
-}
-
-@section jquerys{
-	<script src="~/Scripts/royalslider/jquery.royalslider.min.js"></script>
-	<script type="text/javascript">
-
-        jQuery(function() {
-            'use strict';
-
-            //Get attribute
-            var menuId = @(Model.Id > 0? Model.MenuId: -1);
-
-            jQuery.post('@Url.Action("GetByMenuId", "Post")', { "menuId": menuId, "entityId": @Model.Id })
-                .done(function(data) {
-                    if (data.success === true) {
-                        jQuery("#divAttribute").html(data.list);
-                    }
-                });
-        });
-
-        function initGallery() {
-            $('#gallery')
-                .royalSlider({
-                    fullscreen: {
-                        enabled: true,
-                        nativeFS: true
-                    },
-                    controlNavigation: 'thumbnails',
-                    loop: false,
-                    imageScaleMode: 'fit',
-                    autoScaleSliderHeight: 450,
-                    autoScaleSliderWidth: 490,
-                    slidesSpacing: 5,
-                    autoHeight: false,
-                    autoScaleSlider: false,
-                    imageAlignCenter: true,
-                    numImagesToPreload: 2,
-                    arrowsNav: true,
-                    arrowsNavAutoHide: true,
-                    arrowsNavHideOnTouch: true,
-                    keyboardNavEnabled: true,
-                    fadeinLoadedSlide: true,
-                    globalCaption: false,
-                    globalCaptionInside: false,
-                    thumbs: {
-                        //orientation: 'vertical',
-                        appendSpan: true,
-                        firstMargin: false,
-                        paddingTop: 15,
-                        spacing: 15,
-                        autoCenter: false
-                    }
-                });
-            $('.rsContainer').on('touchmove touchend', function() {});
-        }
-
-        $(function() {
-
-            initGallery();
-
-            var slider = $('#gallery').data('royalSlider');
-            slider.ev.on('rsSlideClick',
-                function() {
-                    if (slider.isFullscreen) {
-                        slider.next();
-                    } else {
-                        slider.enterFullscreen();
-                    }
-                });
-        });
-
-        function CartNotification() {
-            jQuery.post('@Url.Action("OrderNotification", "ShoppingCart")')
-                .done(function(data) {
-                    setTimeout(function() {
-                        $.jGrowl(data.list, { life: 5000 });
-                    });
-                });
-        }
-
-
-        //add to cart
-        $(".addToCart").on('click',
-            function(e) {
-                e.preventDefault();
-                var formId = $(this).closest('form').attr('id');
-
-                var dataParam = {
-                    postId: @Model.Id,
-                    quantity: parseInt($('#quantity').val()),
-                    price: parseInt($('#hddPrice').val()),
-                    form: jQuery('#' + formId).serialize()
-                };
-
-                var param = {
-                    type: 'POST',
-                    url: '@Url.Action("AddProduct", "ShoppingCart")',
-                    data: dataParam,
-                    dataType: 'json',
-                    success: function(response) {
-                        AddItemSuccess(response);
-                        CartNotification();
-                    },
-                    error: function(xmlHttpRequest, textStatus) {
-                        Haravan.onError(xmlHttpRequest, textStatus);
-                    }
-                }
-                jQuery.ajax(param);
-
-            });
-
-        function AddItemSuccess(data) {
-        	jQuery("#top-cart").html(data.list);
-	        jQuery(".cart-block .cart-empty").remove();
-        };
-
-        function addItem(formId) {
-            Haravan.addItemFromForm(formId, EGA.product.addItemSuccess);
-        };
-
-	</script>
-}
-
-@section facebook
-{
-	@*<div id="fb-root"></div>
-		<script>
-			(function (d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s);
-				js.id = id;
-				js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=743590089013725&version=v2.0";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>*@
-}
-
-@section google
-{
-	@*<script src="https://apis.google.com/js/platform.js" async defer></script>*@
 }
 
 <!---/PostDetail---->

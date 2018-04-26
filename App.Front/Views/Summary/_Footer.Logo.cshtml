@@ -4,8 +4,11 @@
 
 @if (Model != null)
 {
-    <a href='@Url.Action("Index", "Home", new { area = "" })'>
-        <img src="@Model.LogoFooterImage.ValidateImage()" alt="@Model.Title" />
-    </a>
+	<div id="media_image-2" class="widget mkdf-footer-column-1 widget_media_image">
+		<a href="@Url.Action("Index", "Home", new { area = "" })">
+			<img width="77" height="14" src="@Model.LogoFooterImage.ValidateImage()" class="image wp-image-2599  attachment-full size-full" 
+			     alt="@Model.Title" style="max-width: 100%; height: auto;" />
+		</a>
+	</div>
 }
 <!---/_Footer.Logo--->

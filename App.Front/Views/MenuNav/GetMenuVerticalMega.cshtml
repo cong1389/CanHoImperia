@@ -16,7 +16,7 @@
                     {
                         <li class="" int="3">
                             <a class="parent " href="@Url.Action("GetContent","Menu",new {menu = item.SeoUrl, area = "" })">
-                                <img class="icon-menu" alt="@item.MenuName" src="@item.IconNav.ValidateImage()">@item.MenuName
+                                <img class="icon-menu" alt="@item.MenuName" src="@item.ImageMediumSize.ValidateImage()">@item.MenuName
                             </a>
                             @if (item.ChildNavMenu != null && item.ChildNavMenu.Any())
                             {

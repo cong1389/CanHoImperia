@@ -3,27 +3,134 @@
 @model IEnumerable<App.Domain.Entities.Slide.SlideShow>
 @if (Model.IsAny())
 {
-    <div id="home-slider">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3 slider-left"></div>
-                <div class="col-sm-9 header-top-right">
-                    <div class="homeslider">
-                        <ul id="contenhomeslider">
-                            @foreach (var item in Model)
-                            {
-                                <li>
-                                    <a href="@item.WebsiteLink">
-                                        <img src="@item.ImgPath.ValidateImage()" alt="@item.Title" />
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="mkdf-row-grid-section-wrapper mkdf-parallax-row-holder" data-parallax-bg-image=assets/wp-content/uploads/2017/10/h1-title-img.jpg data-parallax-bg-speed=1>
+		<div class="mkdf-row-grid-section">
+			<div class="vc_row wpb_row vc_row-fluid vc_custom_1510303832584">
+				<div class="wpb_column vc_column_container vc_col-sm-12">
+					<div class="vc_column-inner ">
+						<div class="wpb_wrapper">
+							<div class="wpb_text_column wpb_content_element ">
+								<div class="wpb_wrapper">
+									<h1 style="text-align: center; font-size: 60px;"><span style="color: #ffffff;">Find the Best Places to Be</span></h1>
+								</div>
+							</div>
+							<div class="vc_empty_space" style="height: 50px"><span class="vc_empty_space_inner"></span></div>
+							<div class="mkdf-elements-holder   mkdf-one-column  mkdf-responsive-mode-768 ">
+								<div class="mkdf-eh-item    " data-item-class="mkdf-eh-custom-5574">
+									<div class="mkdf-eh-item-inner">
+										<div class="mkdf-eh-item-content mkdf-eh-custom-5574" style="padding: 0 5% 0 ">
+											<div class="mkdf-property-search-holder mkdf-search-type-enabled mkdf-search-city-enabled mkdf-search-status-enabled mkdf-light-skin">
+												<div class="mkdf-property-search-inner">
+													<form role="search" method="get" class="searchform mkdf-property-search" action="">
+														<input type="hidden" name="s" value="" />
+														<input type="hidden" name="mkdf-property-search" value="yes" />
+														<div class="mkdf-search-top-part mkdf-search-type-section">
+															<input type="hidden" id="mkdf-search-type" name="mkdf-search-type" />
+															<div class="mkdf-property-type-list-holder mkdf-normal-space mkdf-light-skin mkdf-ptl-six-columns">
+																<ul class="mkdf-ptl-inner mkdf-outer-space clearfix">
+																	<li class="mkdf-ptl-item mkdf-item-space " data-id="19">
+																		<div class="mkdf-ptl-item-inner">
+																			<div class="mkdf-ptl-item-image">
+																				<span class="mkdf-taxonomy-image"><img src="assets/wp-content/uploads/2017/10/type-3-img-light.png" alt="Taxonomy Custom Icon"></span>
+																			</div>
+																			<div class="mkdf-ptl-item-title">
+																				Apartment
+																			</div>        <a itemprop="url" class="mkdf-ptl-item-link" href="property-type/apartment/index.html" target="_self"></a>
+																		</div>
+																	</li>
+																	<li class="mkdf-ptl-item mkdf-item-space " data-id="20">
+																		<div class="mkdf-ptl-item-inner">
+																			<div class="mkdf-ptl-item-image">
+																				<span class="mkdf-taxonomy-image"><img src="assets/wp-content/uploads/2017/10/type-4-img-light.png" alt="Taxonomy Custom Icon"></span>
+																			</div>
+																			<div class="mkdf-ptl-item-title">
+																				Building
+																			</div>        <a itemprop="url" class="mkdf-ptl-item-link" href="property-type/building/index.html" target="_self"></a>
+																		</div>
+																	</li>
+																	<li class="mkdf-ptl-item mkdf-item-space " data-id="21">
+																		<div class="mkdf-ptl-item-inner">
+																			<div class="mkdf-ptl-item-image">
+																				<span class="mkdf-taxonomy-image"><img src="assets/wp-content/uploads/2017/10/type-5-img-light.png" alt="Taxonomy Custom Icon"></span>
+																			</div>
+																			<div class="mkdf-ptl-item-title">
+																				Condominium
+																			</div>        <a itemprop="url" class="mkdf-ptl-item-link" href="property-type/condominium/index.html" target="_self"></a>
+																		</div>
+																	</li>
+																	<li class="mkdf-ptl-item mkdf-item-space " data-id="22">
+																		<div class="mkdf-ptl-item-inner">
+																			<div class="mkdf-ptl-item-image">
+																				<span class="mkdf-taxonomy-image"><img src="assets/wp-content/uploads/2017/10/type-6-img-light.png" alt="Taxonomy Custom Icon"></span>
+																			</div>
+																			<div class="mkdf-ptl-item-title">
+																				House
+																			</div>        <a itemprop="url" class="mkdf-ptl-item-link" href="property-type/house/index.html" target="_self"></a>
+																		</div>
+																	</li>
+																	<li class="mkdf-ptl-item mkdf-item-space " data-id="17">
+																		<div class="mkdf-ptl-item-inner">
+																			<div class="mkdf-ptl-item-image">
+																				<span class="mkdf-taxonomy-image"><img src="assets/wp-content/uploads/2017/11/type-1-img-light.png" alt="Taxonomy Custom Icon"></span>
+																			</div>
+																			<div class="mkdf-ptl-item-title">
+																				Office
+																			</div>        <a itemprop="url" class="mkdf-ptl-item-link" href="property-type/office/index.html" target="_self"></a>
+																		</div>
+																	</li>
+																	<li class="mkdf-ptl-item mkdf-item-space " data-id="18">
+																		<div class="mkdf-ptl-item-inner">
+																			<div class="mkdf-ptl-item-image">
+																				<span class="mkdf-taxonomy-image"><img src="assets/wp-content/uploads/2017/10/type-2-img-light.png" alt="Taxonomy Custom Icon"></span>
+																			</div>
+																			<div class="mkdf-ptl-item-title">
+																				Shop
+																			</div>        <a itemprop="url" class="mkdf-ptl-item-link" href="property-type/shop/index.html" target="_self"></a>
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+
+	@*<div id="home-slider">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3 slider-left"></div>
+					<div class="col-sm-9 header-top-right">
+						<div class="homeslider">
+							<ul id="contenhomeslider">
+								@foreach (var item in Model)
+								{
+									<li>
+										<a href="@item.WebsiteLink">
+											<img src="@item.ImgPath.ValidateImage()" alt="@item.Title" />
+										</a>
+									</li>
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>*@
 }
 
 <!--/GetSlideShow -->

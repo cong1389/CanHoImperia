@@ -45,8 +45,8 @@ namespace App.Front.Controllers.Custom
                                                     VirtualId = x.VirtualId,
                                                     TemplateType = x.TemplateType,
                                                     OtherLink = x.OtherLink,
-                                                    IconNav = x.IconNav,
-                                                    IconBar = x.IconBar,
+                                                    ImageMediumSize = x.ImageMediumSize,
+                                                    ImageSmallSize = x.ImageSmallSize,
                                                     ChildNavMenu = CreateMenuNav(x.MenuId, source)
                                                 }).ToList();
 
@@ -76,8 +76,8 @@ namespace App.Front.Controllers.Custom
                 CurrentVirtualId = x.CurrentVirtualId,
                 VirtualId = x.VirtualId,
                 TemplateType = x.TemplateType,
-                IconNav = x.ImageMediumSize,
-                IconBar = x.ImageSmallSize
+                ImageMediumSize = x.ImageMediumSize,
+                ImageSmallSize = x.ImageSmallSize
             });
             menuNavs = CreateMenuNav(null, menuNav);
 
@@ -111,8 +111,8 @@ namespace App.Front.Controllers.Custom
                 CurrentVirtualId = x.CurrentVirtualId,
                 VirtualId = x.VirtualId,
                 TemplateType = x.TemplateType,
-                IconNav = x.ImageMediumSize,
-                IconBar = x.ImageSmallSize
+                ImageMediumSize = x.ImageMediumSize,
+                ImageSmallSize = x.ImageSmallSize
             });
 
             menuNavs = CreateMenuNav(null, menuNav);
@@ -158,8 +158,8 @@ namespace App.Front.Controllers.Custom
                 CurrentVirtualId = x.CurrentVirtualId,
                 VirtualId = x.VirtualId,
                 TemplateType = x.TemplateType,
-                IconNav = x.ImageMediumSize,
-                IconBar = x.ImageSmallSize
+                ImageMediumSize = x.ImageMediumSize,
+                ImageSmallSize = x.ImageSmallSize
             });
 
             return PartialView(menuNav);
@@ -217,8 +217,8 @@ namespace App.Front.Controllers.Custom
                 CurrentVirtualId = x.CurrentVirtualId,
                 VirtualId = x.VirtualId,
                 TemplateType = x.TemplateType,
-                IconNav = x.ImageMediumSize,
-                IconBar = x.ImageSmallSize
+                ImageMediumSize = x.ImageMediumSize,
+                ImageSmallSize = x.ImageSmallSize
             });
 
             return ieMenuNav;
@@ -247,8 +247,8 @@ namespace App.Front.Controllers.Custom
                         CurrentVirtualId = x.CurrentVirtualId,
                         VirtualId = x.VirtualId,
                         TemplateType = x.TemplateType,
-                        IconNav = x.ImageMediumSize,
-                        IconBar = x.ImageSmallSize
+                        ImageMediumSize = x.ImageMediumSize,
+                        ImageSmallSize = x.ImageSmallSize
                     };
                 menuNavs = CreateMenuNav(null, menuNav);
             }
@@ -278,8 +278,8 @@ namespace App.Front.Controllers.Custom
                     CurrentVirtualId = x.CurrentVirtualId,
                     VirtualId = x.VirtualId,
                     TemplateType = x.TemplateType,
-                    IconNav = x.ImageMediumSize,
-                    IconBar = x.ImageSmallSize
+                    ImageMediumSize = x.ImageMediumSize,
+                    ImageSmallSize = x.ImageSmallSize
                 };
 
             var menuNavs = CreateMenuNav(null, menuNav);
@@ -317,8 +317,8 @@ namespace App.Front.Controllers.Custom
                     CurrentVirtualId = x.CurrentVirtualId,
                     VirtualId = x.VirtualId,
                     TemplateType = x.TemplateType,
-                    IconNav = x.ImageMediumSize,
-                    IconBar = x.ImageSmallSize
+                    ImageMediumSize = x.ImageMediumSize,
+                    ImageSmallSize = x.ImageSmallSize
                 };
 
 
@@ -356,8 +356,8 @@ namespace App.Front.Controllers.Custom
                         CurrentVirtualId = x.CurrentVirtualId,
                         VirtualId = x.VirtualId,
                         TemplateType = x.TemplateType,
-                        IconNav = x.ImageMediumSize,
-                        IconBar = x.ImageSmallSize
+                        ImageMediumSize = x.ImageMediumSize,
+                        ImageSmallSize = x.ImageSmallSize
                     };
                 menuNavs = CreateMenuNav(null, menuNav);
             }

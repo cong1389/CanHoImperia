@@ -1,37 +1,28 @@
 ﻿<!---PostCategories-->
 @model IEnumerable<App.Domain.Entities.Data.Post>
 
-<div id="collection">
+@Html.Action("BannerTop", "Banner", new { menuId = ViewBag.BannerId, postTitle = ViewBag.Title })
 
-    <div class="columns-container">
-        <div class="container" id="columns">
+<div class="mkdf-container">
+	<div class="mkdf-container-inner clearfix">
+		<div class="mkdf-grid-row">
+			<div class="mkdf-sidebar-holder mkdf-grid-col-3">
+				@Html.Action("SearchBoxSideBar", "SearchBox", new
+				{
+					area = "",
+					productOld = ViewBag.ProductOld,
+					productNew = ViewBag.ProductNew,
+					attributes = ViewBag.Attributes,
+					prices = ViewBag.Prices,
+					proAttrs = ViewBag.ProAttributes,
+					virtualId = ViewBag.VirtualId
+				})
+			</div>
+			<div class="mkdf-page-content-holder mkdf-grid-col-9">
+				@Html.Partial("_PostCategory.Post", Model)
+			</div>
 
-            @Html.Partial("_BreadCrumb")
-
-            <!-- row -->
-            <div class="row">
-                <div class="column col-xs-12 col-sm-3" id="left_column">
-                    @Html.Action("SearchBoxSideBar", "SearchBox", new
-                    {
-                        area = "",
-                        productOld = ViewBag.ProductOld,
-                        productNew = ViewBag.ProductNew,
-                        attributes = ViewBag.Attributes,
-                        prices = ViewBag.Prices,
-                        proAttrs = ViewBag.ProAttributes,
-                        virtualId = ViewBag.VirtualId
-                    })
-                </div>
-
-                <div class="center_column col-xs-12 col-sm-9 product-col" id="center_column">
-                    <div id="view-product-list" class="view-product-list">
-                        @Html.Partial("_PostCategory.Post", Model)
-                    </div>
-                </div>
-            </div>
-            <!-- ./row-->
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
-
 <!---/PostCategories-->

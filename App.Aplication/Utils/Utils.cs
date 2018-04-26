@@ -133,11 +133,17 @@ namespace App.Aplication
             {
                 fileName = SplitWords(250, fileName);
             }
+            var rndNext = Guid.NewGuid();
+            var numberTick = rndNext.ToString().Split('-')[0];
 
-            var rnd = new Random();
-            var rndNext = rnd.Next(1, 100);
+            return $"{fileName.NonAccent()}.{numberTick}{fileExtension}";
+            //var rnd = new Random(DateTime.Now.Millisecond);
 
-            return $"{fileName.NonAccent()}.{rndNext}{fileExtension}";
+            //lock (rnd) // synchronize
+            //{
+            //    var rndNext = rnd.Next(1, 9999);
+            //    return $"{fileName.NonAccent()}.{rndNext}{fileExtension}";
+            //}
         }
 
         public static string FolderName(string fileName = null)
@@ -211,7 +217,7 @@ namespace App.Aplication
         public static string ValidateImage(this string imagePath)
         {
             string src = string.Empty, url = string.Empty;
-            var query = "?size=" + 250;
+            var query = "";
             try
             {
                 if (!string.IsNullOrEmpty(imagePath))

@@ -31,7 +31,7 @@ namespace App.FakeEntity.Static
 			set;
 		}
 
-		[Display(Name="ImageSelect", ResourceType=typeof(FormUI))]
+		[Display(Name= "ImageUrl", ResourceType=typeof(FormUI))]
 		public string ImagePath
 		{
 			get;
@@ -153,7 +153,7 @@ namespace App.FakeEntity.Static
             set;
         }
 
-        [Display(Name = "ImageSelect", ResourceType = typeof(FormUI))]
+        [Display(Name = "ImageUrl", ResourceType = typeof(FormUI))]
         public string ImagePath
         {
             get;

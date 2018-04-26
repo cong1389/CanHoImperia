@@ -4,35 +4,306 @@
 
 @if (Model != null)
 {
-    <div id="main-menu-new" class="col-sm-12 col-md-9 main-menu">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#new-menu" aria-expanded="false" aria-controls="navbar">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="#">MENU</a>
-                </div>
-                <div id="new-menu" class="navbar-collapse collapse">
-                    <ul class="t-menu nav">
+	<div class="mkdf-menu-area mkdf-menu-left">
+		<div class="mkdf-row-grid-section mkdf-vertical-align-containers">
+			<div class="mkdf-position-left">
+				<div class="mkdf-position-left-inner">
 
-                        @{
-                            int i = 0;
-                            foreach (MenuNavViewModel item in Model)
-                            {
-                                string clasActive = i == 0 ? "active" : "";
-                                <li class="@clasActive">
-                                    <a class="current" href="@(item.OtherLink = item.OtherLink ?? Url.Action("GetContent", "Menu", new {menu = item.SeoUrl, area = ""}))" title="@item.MenuName" target="_self">
-                                        @item.MenuName
-                                    </a>
-                                </li>
-                                i++;
-                            }
-                        }
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
+					@Html.Action("GetLogo", "Summary", new { area = "" })
+
+					<nav class="mkdf-main-menu mkdf-drop-down mkdf-default-nav">
+						<ul id="menu-main-menu" class="clearfix">
+							
+							@foreach (var lv1 in Model)
+							{
+								<li id="nav-menu-item-184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub narrow">
+									<a href="@Url.Action("GetContent","Menu",new {menu = lv1.SeoUrl, area = "" })" class=" no_link">
+										<span class="item_outer">
+											<span class="item_text">@lv1.MenuName</span>
+											<i class="mkdf-menu-arrow fa fa-angle-down"></i>
+										</span>
+									</a>
+									@if (lv1.ChildNavMenu != null && lv1.ChildNavMenu.Any())
+									{
+										<div class="second">
+											<div class="inner">
+												<ul>
+													@foreach (var lv2 in lv1.ChildNavMenu)
+													{
+														<li id="nav-menu-item-258" class="menu-item menu-item-type-post_type menu-item-object-page ">
+															<a href="@Url.Action("GetContent","Menu",new {menu = lv2.SeoUrl, area = "" })" class="">
+																<span class="item_outer">
+																	<span class="item_text">@lv2.MenuName</span>
+																</span>
+															</a>
+														</li>
+													}
+												</ul>
+											</div>
+										</div>
+									}
+
+								</li>
+							}
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="mkdf-position-right">
+				<div class="mkdf-position-right-inner">
+					<div class="widget mkdf-add-property-widget">
+						<a itemprop="url" href="#" target="_self" class="mkdf-btn mkdf-btn-small mkdf-btn-outline mkdf-btn-icon mkdf-add-property-widget-button mkdf-login-opener">
+
+							<span class="mkdf-btn-text">0909 589 739</span>
+							<span aria-hidden="true" class="mkdf-icon-font-elegant icon_plus "></span>
+						</a>
+					</div>
+					<div class="widget mkdf-login-register-widget mkdf-user-not-logged-in">
+						<a href="#" class="mkdf-login-opener">
+							<span aria-hidden="true" class="mkdf-icon-linear-icons lnr lnr-user "></span>        <span class="mkdf-login-text">Login / Register</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<div class="mkdf-sticky-header">
+		<div class="mkdf-sticky-holder">
+			<div class=" mkdf-vertical-align-containers">
+				<div class="mkdf-position-left">
+					<div class="mkdf-position-left-inner">
+
+						@*<div class="mkdf-logo-wrapper">
+							<a itemprop="url" href="index.html" style="height: 16px;">
+								<img itemprop="image" class="mkdf-normal-logo" src="assets/wp-content/uploads/2017/11/logo-light.png" width="154" height="32" alt="logo" />
+								<img itemprop="image" class="mkdf-dark-logo" src="assets/wp-content/uploads/2017/11/logo-light.png" width="154" height="32" alt="dark logo" />        <img itemprop="image" class="mkdf-light-logo" src="assets/wp-content/uploads/2017/11/logo-light.png" width="154" height="32" alt="light logo" />
+							</a>
+						</div>*@
+					</div>
+				</div>
+				<div class="mkdf-position-right">
+					<div class="mkdf-position-right-inner">
+
+						<nav class="mkdf-main-menu mkdf-drop-down mkdf-sticky-nav">
+							<ul id="menu-main-menu-1" class="clearfix">
+								<li id="sticky-nav-menu-item-1416" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-34 current_page_item mkdf-active-item narrow"><a href="index.html" class=" current "><span class="item_outer"><span class="item_text">Home</span><span class="plus"></span></span></a></li>
+								<li id="sticky-nav-menu-item-184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub narrow">
+									<a href="#" class=" no_link" onclick="JavaScript: return false;"><span class="item_outer"><span class="item_text">Pages</span><span class="plus"></span><i class="mkdf-menu-arrow fa fa-angle-down"></i></span></a>
+									<div class="second">
+										<div class="inner">
+											<ul>
+												<li id="sticky-nav-menu-item-258" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="about-us/index.html" class=""><span class="item_outer"><span class="item_text">About Us</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-2381" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="process/index.html" class=""><span class="item_outer"><span class="item_text">Process</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-541" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="pricing-packages/index.html" class=""><span class="item_outer"><span class="item_text">Pricing Packages</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-257" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="contact-us/index.html" class=""><span class="item_outer"><span class="item_text">Contact Us</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-1350" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="error-page.html" class=""><span class="item_outer"><span class="item_text">404 Error Page</span><span class="plus"></span></span></a></li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li id="sticky-nav-menu-item-185" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub narrow">
+									<a href="#" class=" no_link" onclick="JavaScript: return false;"><span class="item_outer"><span class="item_text">Listings</span><span class="plus"></span><i class="mkdf-menu-arrow fa fa-angle-down"></i></span></a>
+									<div class="second">
+										<div class="inner">
+											<ul>
+												<li id="sticky-nav-menu-item-751" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="property-list/index.html" class=""><span class="item_outer"><span class="item_text">Property List</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-2572" class="menu-item menu-item-type-post_type menu-item-object-property "><a href="property/35-13-30th-avenue/index.html" class=""><span class="item_outer"><span class="item_text">Property Single</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-2657" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Profiles</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-2656" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="agency/your-real-estate/index.html" class=""><span class="item_outer"><span class="item_text">Agency</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-2658" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="agent/nicole-burke/index.html" class=""><span class="item_outer"><span class="item_text">Agent</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-2659" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="owner/ralph-jackson/index.html" class=""><span class="item_outer"><span class="item_text">Owner</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+												<li id="sticky-nav-menu-item-1867" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Standard List</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-1869" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/standard-three-columns-grid/index.html" class=""><span class="item_outer"><span class="item_text">Three Columns Grid</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1886" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/standard-three-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Three Columns Wide</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1885" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/standard-four-columns-grid/index.html" class=""><span class="item_outer"><span class="item_text">Four Columns Grid</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1899" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/standard-four-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Four Columns Wide</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1898" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/standard-five-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Five Columns Wide</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+												<li id="sticky-nav-menu-item-1868" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Gallery List</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-1911" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/gallery-three-columns-grid/index.html" class=""><span class="item_outer"><span class="item_text">Three Columns Grid</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1919" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/gallery-three-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Three Columns Wide</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1930" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/gallery-four-columns/index.html" class=""><span class="item_outer"><span class="item_text">Four Columns Grid</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1942" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/gallery-four-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Four Columns Wide</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1941" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/gallery-five-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Five Columns Wide</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+												<li id="sticky-nav-menu-item-2093" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Masonry List</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-2270" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/masonry-grid/index.html" class=""><span class="item_outer"><span class="item_text">Grid</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-2269" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="properties/masonry-wide/index.html" class=""><span class="item_outer"><span class="item_text">Wide</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+												<li id="sticky-nav-menu-item-1417" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">User Dashboard</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-1419" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="membership/index.html" class=""><span class="item_outer"><span class="item_text">User Dashboard</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1535" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="membership/index2432.html?user-action=edit-profile" class=""><span class="item_outer"><span class="item_text">Edit Profile</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1536" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="membership/indexc18d.html?user-action=user-packages" class=""><span class="item_outer"><span class="item_text">User Packages</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1537" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="membership/indexfc09.html?user-action=property-favorites" class=""><span class="item_outer"><span class="item_text">Property Wishlist</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li id="sticky-nav-menu-item-186" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub narrow">
+									<a href="#" class=" no_link" onclick="JavaScript: return false;"><span class="item_outer"><span class="item_text">Blog</span><span class="plus"></span><i class="mkdf-menu-arrow fa fa-angle-down"></i></span></a>
+									<div class="second">
+										<div class="inner">
+											<ul>
+												<li id="sticky-nav-menu-item-2029" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="blog-standard/right-sidebar/index.html" class=""><span class="item_outer"><span class="item_text">Right Sidebar</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-2027" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="blog-standard/left-sidebar/index.html" class=""><span class="item_outer"><span class="item_text">Left Sidebar</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-2026" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="blog-standard/without-sidebar/index.html" class=""><span class="item_outer"><span class="item_text">Without Sidebar</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-459" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Post Types</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-451" class="menu-item menu-item-type-post_type menu-item-object-post "><a href="dedicated-to-results/index.html" class=""><span class="item_outer"><span class="item_text">Standard</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-455" class="menu-item menu-item-type-post_type menu-item-object-post "><a href="creating-real-value-in-property-and-places/index.html" class=""><span class="item_outer"><span class="item_text">Gallery</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-452" class="menu-item menu-item-type-post_type menu-item-object-post "><a href="matilda-morton/index.html" class=""><span class="item_outer"><span class="item_text">Quote</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-454" class="menu-item menu-item-type-post_type menu-item-object-post "><a href="no-one-has-more-experience-to-help-you-than-an-agent-who-is-a-realtor/index.html" class=""><span class="item_outer"><span class="item_text">Link</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-453" class="menu-item menu-item-type-post_type menu-item-object-post "><a href="the-sign-of-experience/index.html" class=""><span class="item_outer"><span class="item_text">Audio</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-456" class="menu-item menu-item-type-post_type menu-item-object-post "><a href="a-vision-for-your-life/index.html" class=""><span class="item_outer"><span class="item_text">Video</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li id="sticky-nav-menu-item-187" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub narrow">
+									<a href="#" class=" no_link" onclick="JavaScript: return false;"><span class="item_outer"><span class="item_text">Shop</span><span class="plus"></span><i class="mkdf-menu-arrow fa fa-angle-down"></i></span></a>
+									<div class="second">
+										<div class="inner">
+											<ul>
+												<li id="sticky-nav-menu-item-1016" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="shop/index.html" class=""><span class="item_outer"><span class="item_text">Product List</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-1619" class="menu-item menu-item-type-post_type menu-item-object-product "><a href="product/modern-armchair/index.html" class=""><span class="item_outer"><span class="item_text">Product Single</span><span class="plus"></span></span></a></li>
+												<li id="sticky-nav-menu-item-262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Shop Pages</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-261" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="cart/index.html" class=""><span class="item_outer"><span class="item_text">Cart</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="my-account/index.html" class=""><span class="item_outer"><span class="item_text">My Account</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="checkout/index.html" class=""><span class="item_outer"><span class="item_text">Checkout</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+												<li id="sticky-nav-menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Layouts</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-1399" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="shop/three-columns-grid/index.html" class=""><span class="item_outer"><span class="item_text">Three Columns Grid</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1476" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="shop/three-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Three Columns Wide</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1402" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="shop/four-columns-grid/index.html" class=""><span class="item_outer"><span class="item_text">Four Columns Grid</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1477" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="shop/four-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Four Columns Wide</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1934" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="shop/five-columns-wide/index.html" class=""><span class="item_outer"><span class="item_text">Five Columns Wide</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li id="sticky-nav-menu-item-949" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub wide">
+									<a href="#" class=""><span class="item_outer"><span class="item_text">Elements</span><span class="plus"></span><i class="mkdf-menu-arrow fa fa-angle-down"></i></span></a>
+									<div class="second">
+										<div class="inner">
+											<ul>
+												<li id="sticky-nav-menu-item-1365" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Real Estate Shortcodes</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-1502" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/package-list/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_grid-2x2 fa"></i></span><span class="item_text">Package List</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1500" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/property-list/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_house fa"></i></span><span class="item_text">Property List</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1501" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/property-city-list/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_building fa"></i></span><span class="item_text">Property City List</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1498" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/property-slider/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_map fa"></i></span><span class="item_text">Property Slider</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1499" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/property-search/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_search fa"></i></span><span class="item_text">Property Search</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-2011" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/property-type-list/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_ul fa"></i></span><span class="item_text">Property Type List</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+												<li id="sticky-nav-menu-item-1099" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Presentation</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/blog-list-shortcode/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_contacts_alt fa"></i></span><span class="item_text">Blog List Shortcode</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1058" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/image-gallery/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_images fa"></i></span><span class="item_text">Image Gallery</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1336" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/icon-with-text/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_id_alt fa"></i></span><span class="item_text">Icon With Text</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/testimonials/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_flowchart_alt fa"></i></span><span class="item_text">Testimonials</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/video-button/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon arrow_triangle-right fa"></i></span><span class="item_text">Video Button</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/team-list/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_group fa"></i></span><span class="item_text">Team List</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+												<li id="sticky-nav-menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Infographic</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-1340" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/countdown/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_refresh fa"></i></span><span class="item_text">Countdown</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1339" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/counters/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_loading fa"></i></span><span class="item_text">Counters</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1061" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/call-to-action/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon arrow_carrot-right fa"></i></span><span class="item_text">Call To Action</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1059" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/google-maps/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_pin fa"></i></span><span class="item_text">Google Maps</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1338" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/pie-charts/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_piechart fa"></i></span><span class="item_text">Pie Charts</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1337" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/process/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_easel fa"></i></span><span class="item_text">Process</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1335" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/progress-bar/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_datareport fa"></i></span><span class="item_text">Progress Bar</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+												<li id="sticky-nav-menu-item-1064" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub">
+													<a href="#" class=""><span class="item_outer"><span class="item_text">Classic</span><span class="plus"></span></span></a>
+													<ul>
+														<li id="sticky-nav-menu-item-951" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/accordions-toggles/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_menu fa"></i></span><span class="item_text">Accordions &#038; Toggles</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1062" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/buttons/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_circle-slelected fa"></i></span><span class="item_text">Buttons</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1331" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/blockquote/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_quotations fa"></i></span><span class="item_text">Blockquote</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1060" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/contact-form/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_mail_alt fa"></i></span><span class="item_text">Contact Form</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1097" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/separators/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_minus-06 fa"></i></span><span class="item_text">Separators</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/tabs/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_creditcard fa"></i></span><span class="item_text">Tabs</span><span class="plus"></span></span></a></li>
+														<li id="sticky-nav-menu-item-1364" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="elements/typography/index.html" class=""><span class="item_outer"><span class="menu_icon_wrapper"><i class="menu_icon icon_pencil-edit fa"></i></span><span class="item_text">Typography</span><span class="plus"></span></span></a></li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@*<div id="main-menu-new" class="col-sm-12 col-md-9 main-menu">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#new-menu" aria-expanded="false" aria-controls="navbar">
+							<i class="fa fa-bars"></i>
+						</button>
+						<a class="navbar-brand" href="#">MENU</a>
+					</div>
+					<div id="new-menu" class="navbar-collapse collapse">
+						<ul class="t-menu nav">
+
+							@{
+								int i = 0;
+								foreach (MenuNavViewModel item in Model)
+								{
+									string clasActive = i == 0 ? "active" : "";
+									<li class="@clasActive">
+										<a class="current" href="@(item.OtherLink = item.OtherLink ?? Url.Action("GetContent", "Menu", new {menu = item.SeoUrl, area = ""}))" title="@item.MenuName" target="_self">
+											@item.MenuName
+										</a>
+									</li>
+									i++;
+								}
+							}
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>*@
 }
 <!----/GetTopMenu ---->

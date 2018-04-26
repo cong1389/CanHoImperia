@@ -4,155 +4,36 @@
 
 @if (Model.IsAny())
 {
-	<h2 class="page-heading">
-		<span class="page-heading-title">@ViewBag.Title</span>
-	</h2>
-	<ul class="display-product-option">
-		<li class="view-as-grid selected">
-			<span>grid</span>
-		</li>
-		<li class="view-as-list">
-			<span>list</span>
-		</li>
-	</ul>
-	<div class="browse-tags">
-		<span>Sắp xếp theo:</span>
-		<span class="custom-dropdown custom-dropdown--white">
-			<select class="sort-by custom-dropdown__select custom-dropdown__select--white">
-				<option value="manual">Sản phẩm nổi bật</option>
-				<option value="price-ascending">Giá: Tăng dần</option>
-				<option value="price-descending">Giá: Giảm dần</option>
-				<option value="title-ascending">Tên: A-Z</option>
-				<option value="title-descending">Tên: Z-A</option>
-				<option value="created-ascending">Cũ nhất</option>
-				<option value="created-descending">Mới nhất</option>
-				<option value="best-selling">Bán chạy nhất</option>
-			</select>
-		</span>
+	<div class="mkdf-pl-main-holder">
+		<ul class="products">
+			@foreach (var post in Model)
+			{
+				<li class="post-1127 product type-product status-publish has-post-thumbnail product_cat-chairs product_tag-decorative product_tag-interior first instock sale shipping-taxable purchasable product-type-simple">
+					<div class="mkdf-pl-inner">
+						<div class="mkdf-pl-image">
+							<img width="800" height="800" src="@post.ImageMediumSize.ValidateImage()"
+								 class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="a"
+								 srcset="@post.ImageMediumSize.ValidateImage() 800w
+								 , @post.ImageMediumSize.ValidateImage() 150w
+								 , @post.ImageMediumSize.ValidateImage() 180w
+								 , @post.ImageMediumSize.ValidateImage() 550w" sizes="(max-width: 800px) 100vw, 800px">
+							
+						</div><a href="@Url.Action("PostDetail", "Post", new {seoUrl = post.SeoUrl, area = ""})" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
+					</div>
+					<div class="mkdf-pl-text-wrapper">
+						<h5 class="mkdf-product-list-title"><a href="@Url.Action("PostDetail", "Post", new {seoUrl = post.SeoUrl, area = ""})">@post.Title</a></h5>
+						<div class="mkdf-pl-rating-holder">
+							<div class="star-rating"><span style="width: 100%">@post.CreatedDate.ToString("dd/MM/yyyy") </span></div>
+						</div>
+						
+					</div>
+				</li>
+			}
+
+		</ul>
 	</div>
-	<!-- PRODUCT LIST -->
-
-	<ul class="row product-list grid filter">
-
-		@foreach (var post in Model)
-		{
-			<li class="col-md-4 col-sm-6 col-xs-12">
-				<div class="product-container">
-					<div class="left-block">
-						<a href="@Url.Action("PostDetail", "Post", new {seoUrl = post.SeoUrl, area = ""})" title="@post.Title">
-							<img class="img-responsive" alt="@post.Title" src="@post.ImageMediumSize.ValidateImage()" />
-						</a>
-						@if (post.Discount.HasValue && !post.OutOfStock)
-						{
-							<span class="price-percent">
-								Sale
-								<br>
-								- @Html.Raw(post.Discount.FormatPersent())
-							</span>
-						}
-					</div>
-					<div class="right-block">
-						<h5 class="product-name">
-							<a href="@Url.Action("PostDetail", "Post", new {seoUrl = post.SeoUrl, area = ""})">@post.Title</a>
-						</h5>
-						<div class="content_price">
-							@if (!post.OutOfStock)
-							{
-								<span class="price product-price">
-									@if (post.Price.HasValue && post.Discount.HasValue)
-									{
-										@Html.Raw((post.Price - post.Price * post.Discount / 100).FormatPrice())
-									}
-									else if (post.Price.HasValue && !post.Discount.HasValue)
-									{
-										@Html.Raw(post.Price.FormatPrice())
-									}
-									else
-									{
-										@Html.Raw("LienHeDatHang.Lable")
-									}
-								</span>
-								if (post.Discount.HasValue)
-								{
-									<span class="price old-price">@Html.Raw(post.Price.FormatPrice()) </span>
-								}
-							}
-							else
-							{
-								<h5 class="product-name">
-									<span class="label label-danger">Hết hàng</span>
-								</h5>
-							}
-						</div>
-						<div class="info-orther">
-							<p>Mã sản phẩm:@post.ProductCode </p>
-							<p class="availability">
-								Trạng thái:
-								@if (post.OutOfStock)
-								{
-									<span>Hết hàng</span>
-								}
-								else
-								{
-									<span>Còn hàng</span>
-								}
-							</p>
-							<div class="product-desc">
-								@Html.Raw(post.TechInfo)
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-		}
-	</ul>
-
-	Html.RenderPartial("_PagedLinks");
-
+	<div class="mkdf-woo-pagination-holder">
+		<div class="mkdf-woo-pagination-inner"></div>
+	</div>
 }
-else
-{
-	Html.RenderPartial("Messages/_MessageEmtyData");
-}
-
-
-<script>
-    Haravan.queryParams = {};
-    if (location.search.length) {
-        for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
-            aKeyValue = aCouples[i].split('=');
-            if (aKeyValue.length > 1) {
-                Haravan.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
-            }
-        }
-    }
-    var collFilters = jQuery('.coll-filter');
-    collFilters.change(function() {
-        var newTags = [];
-        var newUrl = '';
-        delete Haravan.queryParams.page;
-        collFilters.each(function() {
-            if (jQuery(this).val()) {
-                newTags.push(jQuery(this).val());
-            }
-        });
-
-        newUrl = '/collections/' + 'all';
-        if (newTags.length) {
-            newUrl += '/' + newTags.join('+');
-        }
-        var search = jQuery.param(Haravan.queryParams);
-        if (search.length) {
-            newUrl += '?' + search;
-        }
-        location.href = newUrl;
-
-    });
-    jQuery('.sort-by')
-        .val('price-descending')
-        .bind('change', function() {
-            Haravan.queryParams.sort_by = jQuery(this).val();
-            location.search = jQuery.param(Haravan.queryParams);
-        });
-</script>
 <!---_PostCategory.Post-->

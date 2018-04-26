@@ -4,55 +4,33 @@
 
 @if (Model != null)
 {
-    <div class="columns-container">
-        <div class="container" id="columns">
-            @Html.Partial("_BreadCrumb")
-            <!-- row -->
-            <div class="row">
-                <!-- Left colunm -->
-                <div class="column col-xs-12 col-sm-3" id="left_column">
-                    @{
-                        Html.RenderAction("MenuNavNews", "MenuNav", new { virtualId = ViewBag.VirtualId, area = "" });
-                        Html.RenderAction("NewsTimeLine", "News", new {area = ""});
-                        Html.RenderAction("PostHot", "Post", new {area = ""});
-                    }
-                    
-                </div>
-                <!-- ./left colunm -->
-                <!-- Center colunm-->
-                <div class="center_column col-xs-12 col-sm-9" id="center_column">
-                    <h1 class="page-heading">
-                        <span class="page-heading-title2">@Model.Title</span>
-                    </h1>
-                    <article class="entry-detail">
-                        <div class="entry-meta-data">
-                            <span class="author">
-                                <i class="fa fa-user"></i>
-                                by: <a href="#">@Model.CreatedBy</a>
-                            </span>
+	@Html.Action("BannerTopOfNewsPage", "Banner", new { menuId = ViewBag.BannerId })
 
-                            <span class="date"><i class="fa fa-calendar"></i> @Model.CreatedDate.ToString("dd/MM/yyyy")</span>
+	<section class="container page-content">
+		@Html.Partial("_BreadCrumb")
+		<hr class="vertical-space2">
+		<aside class="col-md-3 sidebar">
+			@Html.Action("MenuNavNews", "MenuNav", new { virtualId = Model.VirtualCategoryId, area = "" })
+		</aside>
 
-                        </div>
-                        <div class="entry-photo">
-                            <img src="@Model.ImageBigSize.ValidateImage()" alt="@Model.Title" title="@Model.Title">
-                        </div>
-                        <div class="content-text clearfix">
-                            @Html.Raw(Model.Description)
-                        </div>
+		<section class="col-md-9 cntt-w">
 
-                    </article>
-                    @{
+			<article class="blog-single-post">
+				<div class="post-trait-w">
+					<h2>
+						@Model.Title
+					</h2>
+					<a href="@Url.Content("~/" + Model.ImageMediumSize)" class='thickbox' title='Zoom'>
+						<img src="@Model.ImageMediumSize.ValidateImage()" width=356 alt="@Model.Title" title="@Model.Title" /></a>
+				</div>
+				<div class="post post-8758 type-post status-publish format-standard has-post-thumbnail hentry category-cloud-computing category-it-news category-networking">
+					@Html.Raw(Model.Description)
+				</div>
+			</article>
 
-                        Html.RenderAction("GetRelativeNews", "News", new { virtualId = Model.MenuLink.VirtualId, newsId = Model.Id, area = "" });
-                    }
-
-                </div>
-                <!-- ./ Center colunm -->
-            </div>
-            <!-- ./row-->
-        </div>
-    </div>
+			<hr class="vertical-space">
+		</section>
+	</section>
 }
 
 <!--/NewsDetail---->

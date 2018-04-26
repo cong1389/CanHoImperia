@@ -136,8 +136,7 @@ namespace App.Front.Controllers
         [ChildActionOnly]
         public ActionResult GetBannerSideBar(int? menuId)
         {
-            var banners = _bannerService.FindBy(x =>
-                x.PageId == 7 && x.PageBanner.Position == 5 && x.Status == 1 &&
+            var banners = _bannerService.FindBy(x => x.PageBanner.Position == 5 && x.Status == 1 &&
                 (!x.FromDate.HasValue ||
                  DbFunctions.DiffHours(x.ToDate.Value, DateTimeOffset.UtcNow.Offset) >= 0) &&
                 (!x.ToDate.HasValue ||

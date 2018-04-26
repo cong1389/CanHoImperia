@@ -1,1 +1,65 @@
-﻿
+﻿@media only screen and (min-width: 1281px) {
+    footer div#text-2 {
+        width: 65%;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    footer div#text-2 {
+        width: 70%;
+    }
+}
+
+.vc_custom_1510303832584 {
+    padding-top: 201px !important;
+    padding-bottom: 166px !important;
+}
+
+.vc_custom_1510575941789 {
+    padding-top: 102px !important;
+    padding-bottom: 104px !important;
+}
+
+.vc_custom_1510575966468 {
+    padding-top: 100px !important;
+    padding-bottom: 107px !important;
+}
+
+.vc_custom_1509547893196 {
+    padding-top: 37px !important;
+    padding-bottom: 37px !important;
+}
+
+.vc_custom_1509613558086 {
+    padding-top: 102px !important;
+}
+
+.vc_custom_1509613603904 {
+    padding-top: 72px !important;
+    padding-bottom: 115px !important;
+}
+
+.vc_custom_1510053207637 {
+    padding-top: 102px !important;
+}
+
+.vc_custom_1510566085927 {
+    padding-top: 37px !important;
+    padding-bottom: 37px !important;
+}
+
+.vc_custom_1510653670605 {
+    padding-top: 60px !important;
+}
+
+.vc_custom_1509972218609 {
+    padding-bottom: 110px !important;
+}
+
+.vc_custom_1510822082335 {
+    padding-bottom: 61px !important;
+}
+
+.mkdf-normal-logo {
+    height: 125px !important;
+}

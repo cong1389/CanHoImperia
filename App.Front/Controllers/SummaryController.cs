@@ -14,16 +14,15 @@ using App.Service.Common;
 using App.Service.ContactInformation;
 using App.Service.Locations;
 using App.Service.Menu;
+using App.Service.Post;
 using App.Service.SeoSetting;
+using App.Service.Static;
 using App.Service.SystemApp;
 
 namespace App.Front.Controllers
 {
     public class SummaryController : FrontBaseController
     {
-        private const string CacheSettingsystemKey = "db.SettingSystem.{0}";
-        private const string CacheSettingseoglobalKey = "db.SettingSeoGlobal.{0}";
-        private readonly ICacheManager _cacheManager;
         private readonly IMenuLinkService _menuLinkService;
 
         private readonly IProvinceService _provinceService;
@@ -35,13 +34,15 @@ namespace App.Front.Controllers
         private readonly IContactInfoService _contactInfoService;
 
         private readonly ISettingSeoGlobalService _settingSeoGlobal;
+        private readonly IPostService _postService;
+        private readonly IStaticContentService _staticContentService;
 
         public SummaryController(IMenuLinkService menuLinkService
             , IProvinceService provinceService, IDistrictService districtService, ISystemSettingService systemSettingService
             , IContactInfoService contactInfoService
             , ISettingSeoGlobalService settingSeoGlobal
             , IWorkContext workContext
-            , ICacheManager cacheManager)
+            , ICacheManager cacheManager, IPostService postService, IStaticContentService staticContentService)
         {
             _menuLinkService = menuLinkService;
             _provinceService = provinceService;
@@ -49,7 +50,8 @@ namespace App.Front.Controllers
             _systemSettingService = systemSettingService;
             _contactInfoService = contactInfoService;
             _settingSeoGlobal = settingSeoGlobal;
-            _cacheManager = cacheManager;
+            _postService = postService;
+            _staticContentService = staticContentService;
         }
 
         [PartialCache("Long")]
@@ -141,19 +143,19 @@ namespace App.Front.Controllers
             return PartialView(contactInformationLocalized);
         }
 
-        [ChildActionOnly]
-        [PartialCache("Short")]
-        public ContentResult GetContentFooter()
-        {
-            var systemSetting = _systemSettingService.GetEnableOrDisable();
+        //[ChildActionOnly]
+        //[PartialCache("Short")]
+        //public ContentResult GetContentFooter()
+        //{
+        //    var systemSetting = _systemSettingService.GetEnableOrDisable();
 
-            if (systemSetting == null)
-            {
-                return Content(string.Empty);
-            }
+        //    if (systemSetting == null)
+        //    {
+        //        return Content(string.Empty);
+        //    }
 
-            return Content(systemSetting.FooterContent);
-        }
+        //    return Content(systemSetting.FooterContent);
+        //}
 
         [HttpPost]
         public JsonResult GetDistrictByProvinceId(int provinceId)
@@ -246,30 +248,8 @@ namespace App.Front.Controllers
         }
 
         [PartialCache("Long")]
-        public JsonResult GetPostAddress()
-        {
-            var contactInformation = _contactInfoService.GetTypeAddress((int)TypeAdress.Current);
-
-            var contactInformationLocalize = contactInformation.ToModel();
-
-            var jsonResult =
-                Json(
-                    new
-                    {
-                        success = true,
-                        list = this.RenderRazorViewToString("_Post.Address", contactInformationLocalize)
-                    }, JsonRequestBehavior.AllowGet);
-
-            return jsonResult;
-
-        }
-
-        [PartialCache("Long")]
         public JsonResult GetFooterAddress()
         {
-            //var contactInformation = _contactInfoService.GetEnableOrDisables();
-            //var contactInformation = _contactInfoService.FindBy(x => x.Status == 1, true);
-
             var contactInformationLocalize = GetBaseContactInfoEnableOrDisables();
 
             var jsonResult =
@@ -294,7 +274,18 @@ namespace App.Front.Controllers
                     JsonRequestBehavior.AllowGet);
 
             return jsonResult;
+        }
 
+        [PartialCache("Long")]
+        public JsonResult GetFooterBottom()
+        {
+            var systemSettingLocalize = GetSystemSettingEnableOrDisableBase();
+
+            var jsonResult =
+                Json(new { success = true, list = this.RenderRazorViewToString("_Footer.Bottom", systemSettingLocalize) },
+                    JsonRequestBehavior.AllowGet);
+
+            return jsonResult;
         }
 
         [PartialCache("Long")]
@@ -359,5 +350,30 @@ namespace App.Front.Controllers
         }
 
         #endregion
+
+        //Hien thi san pham footer
+        [PartialCache("Medium")]
+        public JsonResult PostOutOfStock()
+        {
+            var post = _postService.GetTop(6, x => x.Status == (int)Status.Enable && x.OutOfStock);
+
+            var jsonResult = Json(new { success = true, list = this.RenderRazorViewToString("_Footer.Product", post) },
+                JsonRequestBehavior.AllowGet);
+
+            return jsonResult;
+        }
+
+        [PartialCache("Long")]
+        public JsonResult GetIntro(int menuId)
+        {
+            var staticContent = _staticContentService.Get(x => x.Id == menuId, true);
+
+            var staticContentLocalized = staticContent.ToModel();
+
+            var jsonResult = Json(new { success = true, list = this.RenderRazorViewToString("_Footer.Intro", staticContentLocalized) },
+                JsonRequestBehavior.AllowGet);
+
+            return jsonResult;
+        }
     }
 }

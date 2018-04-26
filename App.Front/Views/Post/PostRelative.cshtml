@@ -3,56 +3,62 @@
 @model IEnumerable<App.Domain.Entities.Data.Post>
 @if (Model.IsAny())
 {
-	<div class="page-product-box">
-		<h3 class="heading">Có thể bạn quan tâm</h3>
-		<ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav="true" data-margin="30" data-autoplayTimeout="1000" data-autoplayHoverPause="true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
-			@foreach (var post in Model)
-			{
-				<li>
-					<div class="product-container">
-						<div class="left-block">
-							<a href="@Url.Action("PostDetail", "Post", new {seoUrl = post.SeoUrl, area = ""})">
-								<img class="img-responsive" alt="@post.Title" src="@post.ImageMediumSize.ValidateImage()" />
-							</a>
-						</div>
-						<div class="right-block">
-							<h5 class="product-name">
-								<a href="@Url.Action("PostDetail", "Post", new {seoUrl = post.SeoUrl, area = ""})">@post.Title</a>
-							</h5>
-							<div class="content_price">
-								@if (!post.OutOfStock)
-								{
-									<span class="price product-price">
-										@if (post.Price.HasValue && post.Discount.HasValue)
+	<div class="mkdf-row-grid-section-wrapper ">
+		<div class="mkdf-row-grid-section">
+			<h5 id="reply-title" class="comment-reply-title">@string.Format("{0} khác", Model.FirstOrDefault().MenuLink.MenuName) <small>
+				<a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display: none;"></a>
+			</small></h5>
+			<div class="vc_row wpb_row vc_row-fluid vc_custom_1510737926595">
+				<div class="wpb_column vc_column_container vc_col-sm-12">
+					<div class="vc_column-inner vc_custom_1509699678637">
+						<div class="wpb_wrapper">
+							<div class="mkdf-property-slider-holder">
+								<div class="mkdf-property-list-holder mkdf-pl-slider mkdf-pl-layout-info-over  mkdf-normal-space mkdf-pl-no-map mkdf-pl-active-filter-hidden mkdf-pl-properties-found mkdf-pl-four-columns mkdf-pl-pag-no-pagination   mkdf-pag-below-slider"
+								     data-type="slider" data-item-layout="info-over" data-number-of-columns="4" data-space-between-items="normal" data-number-of-items="-1" data-enable-fixed-proportions="no" data-image-proportions="full" data-hide-active-filter="yes" data-order-by="date" data-order="ASC" data-title-tag="h5" data-pagination-type="no-pagination" data-property-slider-on="yes" data-enable-loop="yes" data-enable-autoplay="yes" data-slider-speed="5000" data-slider-speed-animation="600" data-enable-navigation="no" data-enable-map="no" data-enable-filter="no" data-enable-pagination="yes" data-pagination-position="below-slider" data-max-num-pages="0" data-next-page="2">
+									<div class="mkdf-pl-inner mkdf-outer-space mkdf-owl-slider mkdf-pl-is-slider clearfix">
+
+										@foreach (var item in Model)
 										{
-											@Html.Raw((post.Price - post.Price * post.Discount / 100).FormatPrice())
+											<article class="mkdf-pl-item mkdf-item-space  post-62 property type-property status-publish has-post-thumbnail hentry property-type-apartment property-feature-ac-heating property-feature-dishwasher property-feature-granite-countertops property-feature-laundry-facilities property-feature-modern-kitchen property-feature-pet-friendly property-feature-storage-units property-feature-washerdryer property-status-for-rent property-county-california property-city-san-diego property-neighborhood-mid-city property-tag-comfortable property-tag-cost-effective property-tag-design property-tag-interior property-tag-listing property-tag-modern property-tag-renovated property-tag-upscale" id="62">
+												<div class="mkdf-pl-item-inner">
+													<div class="mkdf-item-top-section">
+														<div class="mkdf-pli-image">
+															<img width="800" height="800" src="@item.ImageMediumSize.ValidateImage()" class="attachment-full size-full wp-post-image"
+															     alt="" srcset="@item.ImageMediumSize.ValidateImage() 800w
+																 , @item.ImageMediumSize.ValidateImage() 150w
+																 , @item.ImageMediumSize.ValidateImage() 300w
+																 , @item.ImageMediumSize.ValidateImage() 768w
+																 , @item.ImageMediumSize.ValidateImage() 180w
+																 , @item.ImageMediumSize.ValidateImage() 550w" sizes="(max-width: 800px) 100vw, 800px"/>
+														</div>
+														<div class="mkdf-item-top-section-content">
+															<div class="mkdf-item-top-section-content-inner">
+																<div class="mkdf-item-info-bottom">
+																	<div class="mkdf-item-info-bottom-left">
+																		<h5 itemprop="name" class="mkdf-pli-title entry-title">
+																			<a itemprop="url" href="@Url.Action("PostDetail", "Post", new {seoUrl = item.SeoUrl, area = ""})" title="@item.Title" target="_self">
+																				@item.Title
+																			</a>
+																		</h5>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<a itemprop="url" class="mkdf-pli-link mkdf-block-drag-link" href="@Url.Action("PostDetail", "Post", new {seoUrl = item.SeoUrl, area = ""})" target="_self"></a>
+												</div>
+											</article>
 										}
-										else if (post.Price.HasValue && !post.Discount.HasValue)
-										{
-											@Html.Raw(post.Price.FormatPrice())
-										}
-										else
-										{
-											@Html.Raw("LienHeDatHang.Lable")
-										}
-									</span>
-									if (post.Discount.HasValue)
-									{
-										<span class="price old-price">@Html.Raw(post.Price.FormatPrice()) </span>
-									}
-								}
-								else
-								{
-									<h5 class="product-name">
-										<span class="label label-danger">Hết hàng</span>
-									</h5>
-								}
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</li>
-			}
-		</ul>
+				</div>
+			</div>
+		</div>
 	</div>
+
+
 }
 <!---/GetNewProductRelative2--->

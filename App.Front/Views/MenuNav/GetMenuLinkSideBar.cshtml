@@ -3,49 +3,26 @@
 @model IEnumerable<App.FakeEntity.Menu.MenuNavViewModel>
 @if (Model.IsAny())
 {
-    foreach (var lv1 in Model)
-    {
-        <ul class="tree-menu" >
+	var lv1 = Model.FirstOrDefault();
 
-            <li class="">
-                <span></span>
-                <a class="" href="@Url.Action("GetContent", "Menu", new {area = "", menu = lv1.SeoUrl})" title="Thể thao" target="_self">
-                    @lv1.MenuName
-                </a>
-                @if (lv1.ChildNavMenu.IsAny())
-                {
-                    var products = (List<int>)ViewBag.ProIds;
-                    <ul class="tree-menu" style="display: block;">
-                        @foreach (var child in lv1.ChildNavMenu)
-                        {
-                            if (products != null)
-                            {
-                                if (products.Any(x => x == child.MenuId))
-                                {
-                                    <li><span></span>
-                                        <a href="@Url.Action("GetContent", "Menu", new { area = "", menu = child.SeoUrl })">@child.MenuName</a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li><span></span>
-                                        <a href="@Url.Action("GetContent", "Menu", new { area = "", menu = child.SeoUrl })">@child.MenuName</a>
-                                    </li>
-                                }
-                            }
-                            else
-                            {
-                                <li><span></span>
-                                    <a href="@Url.Action("GetContent", "Menu", new { area = "", menu = child.SeoUrl })">@child.MenuName</a>
-                                </li>
-                            }
-                        }
+	<div class="widget woocommerce widget_product_categories">
+		<div class="mkdf-widget-title-holder">
+			<h5 class="mkdf-widget-title"> @lv1.MenuName</h5>
+		</div>
+		@if (lv1 != null && lv1.ChildNavMenu.IsAny())
+		{
+			<ul class="product-categories">
+				@foreach (var child in lv1.ChildNavMenu)
+				{
+					<li class="cat-item cat-item-99 current-cat"><a href="@Url.Action("GetContent", "Menu", new {area = "", menu = child.SeoUrl})"> @child.MenuName</a></li>
 
-                    </ul>
-                }
-            </li>
-        </ul>
-    }
+				}
+			</ul>
+		}
+
+	</div>
+
+
 }
 
 <!---/GetMenuLinkSideBar-->

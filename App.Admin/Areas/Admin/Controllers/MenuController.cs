@@ -361,8 +361,8 @@ namespace App.Admin.Controllers
                         CurrentVirtualId = x.CurrentVirtualId,
                         VirtualId = x.VirtualId,
                         TemplateType = x.TemplateType,
-                        IconNav = x.ImageMediumSize,
-                        IconBar = x.ImageSmallSize
+                        ImageMediumSize = x.ImageMediumSize,
+                        ImageSmallSize = x.ImageSmallSize
                     };
                 lstMenuNav = CreateMenuNav(null, menuNav);
             }
@@ -395,8 +395,8 @@ namespace App.Admin.Controllers
                                           VirtualId = x.VirtualId,
                                           TemplateType = x.TemplateType,
                                           OtherLink = x.OtherLink,
-                                          IconNav = x.IconNav,
-                                          IconBar = x.IconBar,
+                                          ImageMediumSize = x.ImageMediumSize,
+                                          ImageSmallSize = x.ImageSmallSize,
                                           ChildNavMenu = CreateMenuNav(x.MenuId, source)
                                       }).ToList();
 

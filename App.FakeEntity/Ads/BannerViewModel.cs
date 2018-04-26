@@ -28,14 +28,14 @@ namespace App.FakeEntity.Ads
 			set;
 		}
 
-		[Display(Name="ImageSelect", ResourceType=typeof(FormUI))]
+		[Display(Name= "Image", ResourceType=typeof(FormUI))]
 		public HttpPostedFileBase Image
 		{
 			get;
 			set;
 		}
 
-		[Display(Name="ImageSelect", ResourceType=typeof(FormUI))]
+		[Display(Name="ImageUrl", ResourceType=typeof(FormUI))]
 		public string ImgPath
 		{
 			get;

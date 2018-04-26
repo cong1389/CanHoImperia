@@ -10,13 +10,13 @@ else
     if (ViewBag.TemplateType != null && ViewBag.TemplateType == (int)TemplateContent.Product)
     {
         @section jquerys{
-            <script src="~/Scripts/pricerange/bootstrap-slider.js"></script>
+            @*<script src="~/Scripts/pricerange/bootstrap-slider.js"></script>*@
         }
         @section scripts{
-            <script src="~/Scripts/range-price.min.js"></script>
+            @*<script src="~/Scripts/range-price.min.js"></script>*@
         }
         @section stylesheets{
-            <link href="~/Content/pricerange/slider.css" rel="stylesheet" />
+            @*<link href="~/Content/pricerange/slider.css" rel="stylesheet" />*@
         }
 
         @Html.Action("PostCategories", "Post", new { virtualCategoryId = ViewBag.VirtualId, page = ViewBag.PageNumber, title = ViewBag.Title, attrs = ViewBag.Attrs, proattrs = ViewBag.ProAttrs, prices = ViewBag.Prices, keywords = ViewBag.Keywords, area = "" })

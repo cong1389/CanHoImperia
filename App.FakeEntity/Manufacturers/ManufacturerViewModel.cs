@@ -21,7 +21,7 @@ namespace App.FakeEntity.Manufacturers
 			set;
 		}
 
-		[Display(Name="ImageSelect", ResourceType=typeof(FormUI))]
+		[Display(Name= "Image", ResourceType=typeof(FormUI))]
 		public HttpPostedFileBase Image
 		{
 			get;

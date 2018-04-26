@@ -80,6 +80,11 @@
                 var title = $("#Locales_0__Title").val();
                 if (title != "") {
 
+                	//Fill product code
+                	var postCode = App.formatPostCode(title);
+                	$("#Locales_0__ProductCode").val(postCode);
+                	$("#ProductCode").val(postCode);
+
                      //Copy value từ tên sản phẩm bỏ vào group SEO
                     $("#Locales_0__MetaTitle").val(title);
                     $("#Locales_0__MetaKeywords").val(title);
