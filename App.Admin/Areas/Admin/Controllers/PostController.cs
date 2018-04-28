@@ -660,9 +660,9 @@ namespace App.Admin.Controllers
                                 var fileName2 = $"slide.{ titleOriginal}".FileNameFormat(fileExtension);
                                 var fileName3 = $"slide.{ titleOriginal}".FileNameFormat(fileExtension);
 
-                                _imagePlugin.CropAndResizeImage(item, $"{Contains.PostFolder}{folderName}/", fileName1, ImageSize.WithBigSize, ImageSize.HeightBigSize, true);
-                                _imagePlugin.CropAndResizeImage(item, $"{Contains.PostFolder}{folderName}/", fileName2, ImageSize.WithMediumSize, ImageSize.HeightMediumSize, true);
-                                _imagePlugin.CropAndResizeImage(item, $"{Contains.PostFolder}{folderName}/", fileName3, ImageSize.WithSmallSize, ImageSize.HeightSmallSize, true);
+                                _imagePlugin.CropAndResizeImage(item, $"{Contains.PostFolder}{folderName}/", fileName1, ImageSize.PostGalleryWithBigSize, ImageSize.PostGalleryHeightBigSize, true);
+                                _imagePlugin.CropAndResizeImage(item, $"{Contains.PostFolder}{folderName}/", fileName2, ImageSize.PostGalleryWithMediumSize, ImageSize.PostGalleryHeightMediumSize, true);
+                                _imagePlugin.CropAndResizeImage(item, $"{Contains.PostFolder}{folderName}/", fileName3, ImageSize.PostGalleryWithSmallSize, ImageSize.PostGalleryHeightSmallSize, true);
 
                                 postGallery.ImageBigSize = $"{Contains.PostFolder}{folderName}/{fileName1}";
                                 postGallery.ImageMediumSize = $"{Contains.PostFolder}{folderName}/{fileName2}";

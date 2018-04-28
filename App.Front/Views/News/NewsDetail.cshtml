@@ -4,33 +4,35 @@
 
 @if (Model != null)
 {
-	@Html.Action("BannerTopOfNewsPage", "Banner", new { menuId = ViewBag.BannerId })
+	@Html.Action("BannerTopOfNewsPage", "Banner", new { menuId = ViewBag.BannerId, title = ViewBag.Title })
 
-	<section class="container page-content">
-		@Html.Partial("_BreadCrumb")
-		<hr class="vertical-space2">
-		<aside class="col-md-3 sidebar">
-			@Html.Action("MenuNavNews", "MenuNav", new { virtualId = Model.VirtualCategoryId, area = "" })
-		</aside>
+	<div class="mkdf-container">
+		<div class="mkdf-container-inner clearfix">
+			<div class="mkdf-grid-row mkdf-grid-large-gutter">
+				<div class="mkdf-page-content-holder mkdf-grid-col-8">
+					<div class="mkdf-blog-holder mkdf-blog-standard mkdf-blog-pagination-standard mkdf-masonry-images-fixed" data-blog-type="standard" data-next-page="2" data-max-num-pages="2" data-post-number="5" data-excerpt-length="45">
+						<div class="mkdf-blog-holder-inner">
+							<div class="mkdf-post-text-main">
+								<h3 itemprop="name" class="entry-title mkdf-post-title">
+									@Model.Title
+								</h3>              
+								
+							</div>
+							@Html.Raw(Model.Description)
+						</div>
 
-		<section class="col-md-9 cntt-w">
+						<div class="mkdf-blog-pagination-wp">
+						</div>
 
-			<article class="blog-single-post">
-				<div class="post-trait-w">
-					<h2>
-						@Model.Title
-					</h2>
-					<a href="@Url.Content("~/" + Model.ImageMediumSize)" class='thickbox' title='Zoom'>
-						<img src="@Model.ImageMediumSize.ValidateImage()" width=356 alt="@Model.Title" title="@Model.Title" /></a>
+					</div>
 				</div>
-				<div class="post post-8758 type-post status-publish format-standard has-post-thumbnail hentry category-cloud-computing category-it-news category-networking">
-					@Html.Raw(Model.Description)
-				</div>
-			</article>
+				<div class="mkdf-sidebar-holder mkdf-grid-col-4">
+					@Html.Action("MenuNavNews", "MenuNav", new { virtualId = ViewBag.VirtualId, area = "" })
 
-			<hr class="vertical-space">
-		</section>
-	</section>
+				</div>
+			</div>
+		</div>
+	</div>
 }
 
 <!--/NewsDetail---->

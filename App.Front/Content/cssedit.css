@@ -62,4 +62,14 @@
 
 .mkdf-normal-logo {
     height: 125px !important;
+    color: rgba(255, 255, 255, 0);
+    padding: 8px 10px;
+    background: #D4A029 url(images/logo.png) center no-repeat;
+    background-size: 85%;
+    border-radius: 5px;
+}
+
+.vc_custom_1510756575991 {
+    padding-top: 65px !important;
+    padding-bottom: 35px !important;
 }

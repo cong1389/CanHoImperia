@@ -499,6 +499,7 @@
     <Content Include="Themes\Basic\Content\shared\_checkbox-radio.scss" />
     <Content Include="Themes\Basic\Content\_header.scss" />
     <Content Include="Views\Summary\_Footer.Bottom.cshtml" />
+    <Content Include="Themes\Basic\Content\_breadcrumb.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

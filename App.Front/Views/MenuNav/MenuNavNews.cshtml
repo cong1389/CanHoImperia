@@ -4,26 +4,168 @@
 
 @if (Model.IsAny())
 {
-    <div class="block left-module">
-        <p class="title_block">@T("DanhMuc")</p>
-        <div class="block_content">
-            <!-- layered -->
-            <div class="layered layered-category">
-                <div class="layered-content">
-                    <ul class="tree-menu">
-                        @foreach (var item in Model)
-                        {
-                            <li><span></span><a href="@Url.Action("GetContent", "Menu", new {menu = item.SeoUrl, area = ""})">@item.MenuName</a></li>
-                        }
-                    </ul>
-                </div>
-            </div>
-            <!-- ./layered -->
-        </div>
-    </div>
+<aside class="mkdf-sidebar">
+	<div id="custom_html-2" class="widget_text widget widget_custom_html">
+		<div class="mkdf-widget-title-holder"><h5 class="mkdf-widget-title">About Us</h5></div><div class="textwidget custom-html-widget">
+			<div><a href="http://realestator.mikado-themes.com/"><img src="http://realestator.mikado-themes.com/wp-content/uploads/2017/10/sidebar-img-1.jpg" alt="a"></a></div>
+			<div style="margin: 7px 0;">Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit, sed diam nonu mmy nibh euismod tincidunt ut laoreet dolore magna aliquam erat</div>
+			<div><a class="mkdf-btn mkdf-btn-medium mkdf-btn-simple mkdf-btn-icon mkdf-blog-list-button" href="http://realestator.mikado-themes.com/about-us/" target="_self"> <span class="mkdf-btn-text">Read More</span><span aria-hidden="true" class="mkdf-icon-font-elegant arrow_carrot-right "></span></a></div>
+		</div>
+	</div><div class="widget mkdf-blog-list-widget">
+		<div class="mkdf-widget-title-holder"><h5 class="mkdf-widget-title">Related Posts</h5></div><div class="mkdf-blog-list-holder mkdf-bl-simple mkdf-bl-one-column mkdf-small-space mkdf-bl-pag-no-pagination" data-type="simple" data-number-of-posts="5" data-number-of-columns="1" data-space-between-items="small" data-orderby="date" data-order="ASC" data-image-size="thumbnail" data-title-tag="p" data-excerpt-length="40" data-post-info-section="yes" data-post-info-image="yes" data-post-info-author="yes" data-post-info-date="yes" data-post-info-category="yes" data-post-info-comments="no" data-post-info-like="no" data-post-info-share="no" data-pagination-type="no-pagination" data-max-num-pages="2" data-next-page="2">
+			<div class="mkdf-bl-wrapper mkdf-outer-space">
+				<ul class="mkdf-blog-list">
+					<li class="mkdf-bl-item mkdf-item-space clearfix">
+						<div class="mkdf-bli-inner">
+
+							<div class="mkdf-post-image">
+								<a itemprop="url" href="http://zuhaus.mikado-themes.com/solutions-made-easy/" title="Solutions Made Easy">
+									<img width="150" height="150" src="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-10-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="a" srcset="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-10-150x150.jpg 150w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-10-180x180.jpg 180w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-10-800x800.jpg 800w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-10-550x550.jpg 550w" sizes="(max-width: 150px) 100vw, 150px">
+								</a>
+							</div>
+							<div class="mkdf-bli-content">
+
+								<p itemprop="name" class="entry-title mkdf-post-title">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/solutions-made-easy/" title="Solutions Made Easy">
+										Solutions Made Easy
+									</a>
+								</p>			<div itemprop="dateCreated" class="mkdf-post-info-date entry-date published updated">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/2017/10/">
+
+										October 24, 2017
+									</a>
+									<meta itemprop="interactionCount" content="UserComments: 0">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="mkdf-bl-item mkdf-item-space clearfix">
+						<div class="mkdf-bli-inner">
+
+							<div class="mkdf-post-image">
+								<a itemprop="url" href="http://zuhaus.mikado-themes.com/outstanding-agents/" title="Outstanding Agents">
+									<img width="150" height="150" src="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-2-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="a" srcset="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-2-150x150.jpg 150w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-2-180x180.jpg 180w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-2-800x800.jpg 800w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-2-550x550.jpg 550w" sizes="(max-width: 150px) 100vw, 150px">
+								</a>
+							</div>
+							<div class="mkdf-bli-content">
+
+								<p itemprop="name" class="entry-title mkdf-post-title">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/outstanding-agents/" title="Outstanding Agents">
+										Outstanding Agents
+									</a>
+								</p>			<div itemprop="dateCreated" class="mkdf-post-info-date entry-date published updated">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/2017/10/">
+
+										October 24, 2017
+									</a>
+									<meta itemprop="interactionCount" content="UserComments: 0">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="mkdf-bl-item mkdf-item-space clearfix">
+						<div class="mkdf-bli-inner">
+
+							<div class="mkdf-post-image">
+								<a itemprop="url" href="http://zuhaus.mikado-themes.com/your-ideal-home/" title="Your Ideal Home">
+									<img width="150" height="150" src="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-11-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="a" srcset="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-11-150x150.jpg 150w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-11-180x180.jpg 180w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-11-800x800.jpg 800w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-11-550x550.jpg 550w" sizes="(max-width: 150px) 100vw, 150px">
+								</a>
+							</div>
+							<div class="mkdf-bli-content">
+
+								<p itemprop="name" class="entry-title mkdf-post-title">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/your-ideal-home/" title="Your Ideal Home">
+										Your Ideal Home
+									</a>
+								</p>			<div itemprop="dateCreated" class="mkdf-post-info-date entry-date published updated">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/2017/10/">
+
+										October 24, 2017
+									</a>
+									<meta itemprop="interactionCount" content="UserComments: 0">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="mkdf-bl-item mkdf-item-space clearfix">
+						<div class="mkdf-bli-inner">
+
+							<div class="mkdf-post-image">
+								<a itemprop="url" href="http://zuhaus.mikado-themes.com/jonathan-baker/" title="Jonathan Baker">
+									<img width="150" height="150" src="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-8-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="a" srcset="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-8-150x150.jpg 150w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-8-180x180.jpg 180w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-8-800x800.jpg 800w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/11/blog-post-img-8-550x550.jpg 550w" sizes="(max-width: 150px) 100vw, 150px">
+								</a>
+							</div>
+							<div class="mkdf-bli-content">
+
+								<p itemprop="name" class="entry-title mkdf-post-title">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/jonathan-baker/" title="Jonathan Baker">
+										Jonathan Baker
+									</a>
+								</p>			<div itemprop="dateCreated" class="mkdf-post-info-date entry-date published updated">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/2017/10/">
+
+										October 25, 2017
+									</a>
+									<meta itemprop="interactionCount" content="UserComments: 0">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="mkdf-bl-item mkdf-item-space clearfix">
+						<div class="mkdf-bli-inner">
+
+							<div class="mkdf-post-image">
+								<a itemprop="url" href="http://zuhaus.mikado-themes.com/a-vision-for-your-life/" title="A Vision for Your Life">
+									<img width="150" height="150" src="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-4-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="a" srcset="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-4-150x150.jpg 150w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-4-180x180.jpg 180w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-4-800x800.jpg 800w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/blog-post-img-4-550x550.jpg 550w" sizes="(max-width: 150px) 100vw, 150px">
+								</a>
+							</div>
+							<div class="mkdf-bli-content">
+
+								<p itemprop="name" class="entry-title mkdf-post-title">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/a-vision-for-your-life/" title="A Vision for Your Life">
+										A Vision for Your Life
+									</a>
+								</p>			<div itemprop="dateCreated" class="mkdf-post-info-date entry-date published updated">
+									<a itemprop="url" href="http://zuhaus.mikado-themes.com/2017/10/">
+
+										October 25, 2017
+									</a>
+									<meta itemprop="interactionCount" content="UserComments: 0">
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div><div id="categories-2" class="widget widget_categories">
+		<div class="mkdf-widget-title-holder"><h5 class="mkdf-widget-title">Categories</h5></div>		<ul>
+			<li class="cat-item cat-item-1">
+				<a href="http://zuhaus.mikado-themes.com/category/advertising/">Advertising</a>
+			</li>
+			<li class="cat-item cat-item-42">
+				<a href="http://zuhaus.mikado-themes.com/category/breaking-news/">Breaking News</a>
+			</li>
+			<li class="cat-item cat-item-96">
+				<a href="http://zuhaus.mikado-themes.com/category/interior-design/">Interior Design</a>
+			</li>
+			<li class="cat-item cat-item-97">
+				<a href="http://zuhaus.mikado-themes.com/category/investment/">Investment</a>
+			</li>
+			<li class="cat-item cat-item-41">
+				<a href="http://zuhaus.mikado-themes.com/category/lifestyle/">Lifestyle</a>
+			</li>
+		</ul>
+	</div><div id="media_image-3" class="widget widget_media_image"><a href="http://zuhaus.mikado-themes.com/"><img width="300" height="184" src="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/sidebar-banner-img-1-300x184.jpg" class="image wp-image-115  attachment-medium size-medium" alt="a" style="max-width: 100%; height: auto;" srcset="http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/sidebar-banner-img-1-300x184.jpg 300w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/sidebar-banner-img-1-768x471.jpg 768w, http://zuhaus.mikado-themes.com/wp-content/uploads/2017/10/sidebar-banner-img-1.jpg 800w" sizes="(max-width: 300px) 100vw, 300px"></a></div><div class="widget mkdf-separator-widget">
+		<div class="mkdf-separator-holder clearfix  mkdf-separator-center mkdf-separator-normal">
+			<div class="mkdf-separator" style="border-style: solid;border-bottom-width: 20px;margin-top: 0px;margin-bottom: 0px"></div>
+		</div>
+</div>	
+
+	
 
 
-
+</aside>
 }
 
 <!----/MenuNavNews-->

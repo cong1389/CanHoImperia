@@ -1,0 +1,32 @@
+﻿.top-header {
+    background: #f6f6f6;
+
+    .user-info {
+        width: auto;
+        display: inline-block;
+        line-height: 34px;
+    }
+
+    a.first-item {
+        margin-left: 0;
+    }
+
+    a {
+        border-right: 1px solid #e0e0e0;
+        padding-right: 10px;
+        margin-left: 10px;
+    }
+
+    img {
+        display: inline-block !important;
+        vertical-align: middle;
+        margin-top: -3px;
+        margin-right: 5px;
+    }
+
+    .nav-top-links {
+        width: auto;
+        display: inline-block;
+        line-height: 34px;
+    }
+}

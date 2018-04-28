@@ -4,64 +4,174 @@
 @model App.Front.Models.ContactForm
 
 @{
-    <div class="columns-container" id="contact">
-        <div class="container contact-shop" id="columns">
-            <div class="breadcrumb clearfix">
-                <a class="home" href="#" title="Return to Home">Home</a>
-                <span class="navigation-pipe">&nbsp;</span>
-                <span class="navigation_page">Contact</span>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-12 col-xs-12" id="layout-page">
+	<div class="mkdf-full-width">
 
-                    <span class="header-contact header-page clearfix">
-                        <h1>Liên hệ</h1>
-                    </span>
+		<div class="mkdf-full-width-inner">
+			<div class="mkdf-grid-row">
+				<div class="mkdf-page-content-holder mkdf-grid-col-12">
+					<div class="vc_row wpb_row vc_row-fluid">
+						<div class="wpb_column vc_column_container vc_col-sm-12">
+							<div class="vc_column-inner ">
+								<div class="wpb_wrapper">
+									<div class="mkdf-google-map-holder">
+										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.174389486423!2d106.63972531480098!3d10.797951992306917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294e09a3e3f3%3A0x3bda34be0ce347eb!2zQ8O0bmcgdHkgQ1AgVGhp4bq_dCBr4bq_IFjDonkgZOG7sW5nIELhu5kgQmEgKGJiYS52bik!5e0!3m2!1svi!2s!4v1524640432485" width="100%" height="500" frameborder="0" style="border: 0" allowfullscreen=""></iframe>
 
-                    <div class="content-contact content-page clearfix">
+										<div class="mkdf-google-map-overlay"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><div class="mkdf-row-grid-section-wrapper ">
+						<div class="mkdf-row-grid-section">
+							<div class="vc_row wpb_row vc_row-fluid vc_custom_1510756575991">
+								<div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6">
+									<div class="vc_column-inner ">
+										<div class="wpb_wrapper">
+											<div class="mkdf-section-title-holder  mkdf-st-standard mkdf-st-title-center mkdf-st-normal-space ">
+												<div class="mkdf-st-inner">
+													<h2 class="mkdf-st-title">
+														Send Us a Message
+													</h2>
+													<p class="mkdf-st-text" style="font-size: 18px">
+														We’d love to hear from you. Say us hello!
+													</p>
+												</div>
+											</div><div class="vc_empty_space" style="height: 9px"><span class="vc_empty_space_inner"></span></div>
+											<div role="form" class="wpcf7" id="wpcf7-f4-p117-o1" lang="en-US" dir="ltr">
+												<div class="screen-reader-response"></div>
+												@using (Html.BeginForm("SendContact", "Contact", FormMethod.Post, new { enctype = "multipart/form-data", id = "form-send-Contact" }))
+												{
+													@Html.ValidationSummary()
+													<div class="form-group">
+														@Html.LabelFor(mode => Model.FullName, new { @class = "sr-only" })
+														<span class="wpcf7-form-control-wrap your-name">
+															@Html.TextBoxFor(model => model.FullName, new { @class = "wpcf7-form-control wpcf7-text wpcf7-validates-as-required", required = true, autocapitalize = "words", placeholder = Html.DisplayPlaceHolderFor(m => m.FullName) })
+														</span>
+													</div>
+													<div class="form-group">
+														@Html.LabelFor(mode => Model.Email, new { @class = "sr-only" })
+														<span class="wpcf7-form-control-wrap your-name">
+															@Html.TextBoxFor(model => model.Email, new { @class = "wpcf7-form-control wpcf7-text wpcf7-validates-as-required", required = true, autocapitalize = "words", placeholder = Html.DisplayPlaceHolderFor(m => m.Email) })
+														</span>
+													</div>
+													<div class="form-group">
+														@Html.LabelFor(mode => Model.Content, new { @class = "sr-only" })
+														<span class="wpcf7-form-control-wrap your-name">
+															@Html.TextAreaFor(model => model.Content, new { rows = "6", @class = "wpcf7-form-control wpcf7-text wpcf7-validates-as-required", required = true, autocapitalize = "words", placeholder = Html.DisplayPlaceHolderFor(m => m.Content) })
+														</span>
+													</div>
 
-                        <p class="text-center">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.174389486423!2d106.63972531480098!3d10.797951992306917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294e09a3e3f3%3A0x3bda34be0ce347eb!2zQ8O0bmcgdHkgQ1AgVGhp4bq_dCBr4bq_IFjDonkgZOG7sW5nIELhu5kgQmEgKGJiYS52bik!5e0!3m2!1svi!2s!4v1524640432485" width="100%" height="500" frameborder="0" style="border: 0" allowfullscreen=""></iframe>
-                        </p>
+													<input id="btn-send-contact" type="submit" value="Gửi thông tin" class="wpcf7-form-control wpcf7-submit">
+													<span class="ajax-loader"></span>
 
-                        <div class="col-md-7" id="col-left contactFormWrapper">
-                            <h3>Viết nhận xét</h3>
-                            <hr class="line-left">
-                            <p>
-                                Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể .
-                            </p>
-                            @using (Html.BeginForm("SendContact", "Contact", FormMethod.Post, new { enctype = "multipart/form-data", id = "form-send-Contact" }))
-                            {
-                                @Html.ValidationSummary()
-                                <div class="form-group">
-                                    @Html.LabelFor(mode => Model.FullName, new { @class = "sr-only" })
-                                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control input-lg", required = true, autocapitalize = "words", placeholder = Html.DisplayPlaceHolderFor(m => m.FullName) })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(mode => Model.Email, new { @class = "sr-only" })
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-lg", required = true, autocapitalize = "words", placeholder = Html.DisplayPlaceHolderFor(m => m.Email) })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(mode => Model.Content, new { @class = "sr-only" })
-                                    @Html.TextAreaFor(model => model.Content, new { rows = "6", @class = "form-control input-lg", required = true, autocapitalize = "words", placeholder = Html.DisplayPlaceHolderFor(m => m.Content) })
-                                </div>
+												}
 
-                                <button id="btn-send-contact" type="submit" class="btn">
-                                    <i class="glyphicon glyphicon-envelope"></i>
-                                    Gửi thông tin
-                                </button>
-                            }
-                        </div>
+											</div>
+											<div class="vc_empty_space" style="height: 65px">
+												<span class="vc_empty_space_inner"></span>
+											</div>
+										</div>
+									</div>
+								</div><div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6">
+									<div class="vc_column-inner ">
+										<div class="wpb_wrapper">
+											<div class="mkdf-elements-holder   mkdf-one-column  mkdf-responsive-mode-768 ">
+												<div class="mkdf-eh-item    " data-item-class="mkdf-eh-custom-6604" data-768-1024="0px 0px 0px 0%" data-680-768="0px 0px 0px 0%" data-680="0px 0px 0px 0%">
+													<div class="mkdf-eh-item-inner">
+														<div class="mkdf-eh-item-content mkdf-eh-custom-6604" style="padding: 0px 0px 0px 10%">
+															<div class="mkdf-section-title-holder  mkdf-st-standard mkdf-st-title-center mkdf-st-normal-space ">
+																<div class="mkdf-st-inner">
+																	<h2 class="mkdf-st-title">
+																		About Our Company
+																	</h2>
+																	<p class="mkdf-st-text" style="font-size: 18px">
+																		Hendrerit in vulputate velit esse molestie consequat.
+																	</p>
+																</div>
+															</div><div class="vc_empty_space" style="height: 13px"><span class="vc_empty_space_inner"></span></div>
 
-                        <div class="col-md-5" id="col-right">
-                            @{Html.RenderPartial("_ContactPartial", (IEnumerable<ContactInformation>)ViewBag.Contact);}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+															<div class="wpb_text_column wpb_content_element ">
+																<div class="wpb_wrapper">
+																	<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent.</p>
 
-    </div>
+																</div>
+															</div>
+															<div class="vc_empty_space" style="height: 12px"><span class="vc_empty_space_inner"></span></div>
+
+															<div class="wpb_text_column wpb_content_element ">
+																<div class="wpb_wrapper">
+																	<p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.</p>
+
+																</div>
+															</div>
+															<div class="mkdf-separator-holder clearfix  mkdf-separator-center mkdf-separator-full-width">
+																<div class="mkdf-separator" style="border-color: #e1e1e1;border-bottom-width: 1px;margin-top: 38px;margin-bottom: 40px"></div>
+															</div>
+															<div class="mkdf-icon-list-holder ">
+																<div class="mkdf-il-icon-holder">
+																	<i class="mkdf-icon-simple-line-icon icon-location-pin " style="font-size: 13px"></i>
+																</div>
+																<p class="mkdf-il-text" style="padding-left: 20px">774 NE 84th St Miami, FL 33879</p>
+															</div><div class="mkdf-icon-list-holder ">
+																<div class="mkdf-il-icon-holder">
+																	<i class="mkdf-icon-simple-line-icon icon-call-end " style="font-size: 13px"></i>
+																</div>
+																<p class="mkdf-il-text" style="padding-left: 20px">Call us FREE +1 (800) 990 8877</p>
+															</div><div class="mkdf-icon-list-holder ">
+																<div class="mkdf-il-icon-holder">
+																	<i class="mkdf-icon-simple-line-icon icon-envelope " style="font-size: 13px"></i>
+																</div>
+																<p class="mkdf-il-text" style="padding-left: 20px">officeinfo@example.com</p>
+															</div><div class="vc_empty_space" style="height: 12px"><span class="vc_empty_space_inner"></span></div>
+
+															<div class="wpb_text_column wpb_content_element ">
+																<div class="wpb_wrapper">
+																	<p>Don’t forget to follow us on:</p>
+
+																</div>
+															</div>
+															<div class="vc_empty_space" style="height: 12px"><span class="vc_empty_space_inner"></span></div>
+															<span class="mkdf-icon-shortcode mkdf-normal   " style="margin: 0px 15px 0px 0px" data-hover-color="#ffcc00" data-color="#010101">
+																<a itemprop="url" class="" href="https://twitter.com/" target="_blank">
+																	<i class="mkdf-icon-font-awesome fa fa-twitter mkdf-icon-element" style="color: #010101;font-size:15px"></i>
+																</a>
+															</span>
+															<span class="mkdf-icon-shortcode mkdf-normal   " style="margin: 0px 15px 0px 0px" data-hover-color="#ffcc00" data-color="#010101">
+																<a itemprop="url" class="" href="https://www.pinterest.com/" target="_blank">
+																	<i class="mkdf-icon-font-awesome fa fa-pinterest-p mkdf-icon-element" style="color: #010101;font-size:15px"></i>
+																</a>
+															</span>
+															<span class="mkdf-icon-shortcode mkdf-normal   " style="margin: 0px 15px 0px 0px" data-hover-color="#ffcc00" data-color="#010101">
+																<a itemprop="url" class="" href="https://www.facebook.com/" target="_blank">
+																	<i class="mkdf-icon-font-awesome fa fa-facebook mkdf-icon-element" style="color: #010101;font-size:15px"></i>
+																</a>
+															</span>
+															<span class="mkdf-icon-shortcode mkdf-normal   " style="margin: 0px 15px 0px 0px" data-hover-color="#ffcc00" data-color="#010101">
+																<a itemprop="url" class="" href="https://www.instagram.com" target="_self">
+																	<i class="mkdf-icon-font-awesome fa fa-instagram mkdf-icon-element" style="color: #010101;font-size:15px"></i>
+																</a>
+															</span>
+															<span class="mkdf-icon-shortcode mkdf-normal   " style="margin: 0px 15px 0px 0px" data-hover-color="#ffcc00" data-color="#010101">
+																<a itemprop="url" class="" href="https://www.flickr.com/" target="_self">
+																	<i class="mkdf-icon-font-awesome fa fa-flickr mkdf-icon-element" style="color: #010101;font-size:15px"></i>
+																</a>
+															</span>
+															<div class="vc_empty_space" style="height: 65px"><span class="vc_empty_space_inner"></span></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
 }
 
 

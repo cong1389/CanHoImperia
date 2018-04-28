@@ -43,7 +43,7 @@ namespace App.Front.Controllers
         [ChildActionOnly]
         public ActionResult BannerTopOfNewsPage(int? menuId, string title)
         {
-            var banners = _bannerService.Get(x =>
+            var banners = _bannerService.FindBy(x =>
                 x.MenuId == menuId && x.Status == 1 && x.PageBanner.Position == 1 &&
                 (!x.FromDate.HasValue ||
                  DbFunctions.DiffHours(x.ToDate.Value, DateTimeOffset.UtcNow.Offset) >= 0) &&

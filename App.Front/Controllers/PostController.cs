@@ -203,8 +203,14 @@ namespace App.Front.Controllers
             _postService.Update(post);
 
             var categories = post.VirtualCategoryId.Split('/');
+
+            var menuLinks =
+                categories.Select(currentVirtualId => _menuLinkService.GetByCurrentVirtualId(currentVirtualId));
+
+            ViewBag.BannerId = menuLinks.FirstOrDefault().Id;
+
             var breadCrumbs = new List<BreadCrumb>();
-            breadCrumbs.AddRange(categories.Select(str => _menuLinkService.GetByCurrentVirtualId(str))
+            breadCrumbs.AddRange(menuLinks
                 .Select(menuLink => new BreadCrumb
                 {
                     Title = menuLink.GetLocalized(x => x.MenuName, menuLink.Id),
@@ -251,7 +257,7 @@ namespace App.Front.Controllers
                 posts.AddRange(tops);
             }
 
-            return Json(new {data = this.RenderRazorViewToString("_PartialPostItems", posts), success = true},
+            return Json(new { data = this.RenderRazorViewToString("_PartialPostItems", posts), success = true },
                 JsonRequestBehavior.AllowGet);
         }
 
@@ -413,7 +419,7 @@ namespace App.Front.Controllers
                 return Json(new { success = false }, JsonRequestBehavior.AllowGet);
             }
 
-            return Json(new {data = this.RenderRazorViewToString("_PartialGallery", galleryImages), success = true},
+            return Json(new { data = this.RenderRazorViewToString("_PartialGallery", galleryImages), success = true },
                 JsonRequestBehavior.AllowGet);
         }
 
@@ -523,7 +529,7 @@ namespace App.Front.Controllers
 
             return View(posts);
         }
-        
+
         #region Post discount
 
         [ChildActionOnly]

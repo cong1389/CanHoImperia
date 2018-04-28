@@ -7,7 +7,8 @@
 @if (Model != null)
 {
 
-	@Html.Action("BannerTop", "Banner", new { menuId = ViewBag.BannerId, postTitle = ViewBag.Title })
+	@Html.Action("BannerTop", "Banner", new { menuId = ViewBag.BannerId, title = ViewBag.Title })
+	{Html.RenderPartial("_BreadCrumb");}
 
 	<div class="mkdf-container">
 		<div class="mkdf-container-inner clearfix">
@@ -74,12 +75,12 @@
 												</div>
 											</div>
 										</div>
-										
+
 									</div>
 								</div>
 							</div>
-						</article>	
-					
+						</article>
+
 						@Html.Action("PostRelative", "Post", new { area = "", virtualId = Model.MenuLink.VirtualId, productId = Model.Id })
 
 					</div>

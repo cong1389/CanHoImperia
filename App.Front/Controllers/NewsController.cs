@@ -129,6 +129,9 @@ namespace App.Front.Controllers
                 news = news.Where(n => n.CreatedDate.Year == year);
             }
 
+            //Get menu category filter
+            var menuCategoryFilter = _menuLinkService.GetByOption(virtualId: virtualCategoryId);
+
             var newsLocalized = news
                 .Select(x => x.ToModel());
 
@@ -139,13 +142,22 @@ namespace App.Front.Controllers
                 ViewBag.CountItem = pageInfo.TotalItems;
 
                 var breadCrumbs = new List<BreadCrumb>();
-                var strArrays2 = virtualCategoryId.Split('/');
-                for (var i1 = 0; i1 < strArrays2.Length; i1++)
+
+                //Lấy bannerId từ post để hiển thị banner trên post
+                ViewBag.BannerId = menuCategoryFilter.FirstOrDefault(x => x.VirtualId == virtualCategoryId).Id;
+
+                var categories = virtualCategoryId.Split('/');
+                for (var i = 0; i < categories.Length; i++)
                 {
-                    var str = strArrays2[i1];
+                    var str = categories[i];
                     var menuLink = _menuLinkService.GetByMenuName(str, title);
                     if (menuLink != null)
-                    {
+                    { 
+                        //Lấy bannerId từ post để hiển thị banner trên post
+                        if (i == 0)
+                        {
+                            ViewBag.BannerId = menuLink.Id;
+                        }
                         breadCrumbs.Add(new BreadCrumb
                         {
                             Title = menuLink.GetLocalized(m => m.MenuName, menuLink.Id),
@@ -249,7 +261,7 @@ namespace App.Front.Controllers
             }
            
             ViewBag.SeoUrl = newsLocalized.MenuLink.SeoUrl;
-
+           
             return View(newsLocalized);
         }
 

@@ -4,62 +4,88 @@
 @if (Model.IsAny())
 {
 	@Html.Action("BannerTopOfNewsPage", "Banner", new { menuId = ViewBag.MenuId, title = ViewBag.Title })
-	{Html.RenderPartial("_BreadCrumb");}
 
-	<section class="container page-content">
+	//{ Html.RenderPartial("_BreadCrumb"); }
 
-		<hr class="vertical-space2" />
+	<div class="mkdf-container">
+		<div class="mkdf-container-inner clearfix">
+			<div class="mkdf-grid-row mkdf-grid-large-gutter">
+				<div class="mkdf-page-content-holder mkdf-grid-col-8">
+					<div class="mkdf-blog-holder mkdf-blog-standard mkdf-blog-pagination-standard mkdf-masonry-images-fixed" data-blog-type="standard" data-next-page="2" data-max-num-pages="2" data-post-number="5" data-excerpt-length="45">
+						<div class="mkdf-blog-holder-inner">
 
-		<aside class="col-md-3 sidebar">
-			@Html.Action("MenuNavNews", "MenuNav", new { virtualId = ViewBag.VirtualId, area = "" })
-		</aside>
+							@foreach (var item in Model)
+							{
+								<article id="post-43" class="mkdf-post-has-media post-43 post type-post status-publish format-standard has-post-thumbnail hentry category-breaking-news tag-experience tag-property">
+									<div class="mkdf-post-content">
+										<div class="mkdf-post-heading">
 
-		<section class="col-md-9 cntt-w">
+											<div class="mkdf-post-image">
+												<a itemprop="url" href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})" title="Dedicated to Results">
+													<img width="1300" height="813" src="@item.ImageMediumSize.ValidateImage()" class="attachment-full size-full wp-post-image"
+														 alt="a" srcset="@item.ImageMediumSize.ValidateImage() 1300w
+														 , @item.ImageMediumSize.ValidateImage() 300w
+														 , @item.ImageMediumSize.ValidateImage() 768w
+														 , @item.ImageMediumSize.ValidateImage() 1024w" sizes="(max-width: 1300px) 100vw, 1300px">
+												</a>
+											</div>
+										</div>
+										<div class="mkdf-post-text">
+											<div class="mkdf-post-text-inner">
+												<div class="mkdf-post-info-top">
+													<div itemprop="dateCreated" class="mkdf-post-info-date entry-date published updated">
+														<a itemprop="url" href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})">
+															@item.CreatedDate.ToString("dd/MM/yyyy")
+														</a>
+														<meta itemprop="interactionCount" content="UserComments: 0">
+													</div>
+													<div class="mkdf-post-info-category">
+														<a href="#" rel="category tag">@item.MenuLink.MenuName</a>
+													</div>
 
-			@foreach (var item in Model)
-			{
-				<article id="post-8758" class="blog-post blgtyp2 post-8758 post type-post status-publish format-standard has-post-thumbnail hentry category-cloud-computing category-it-news category-networking">
-					<div class="col-md-5 alpha boxFixImg_Blog_309_243">
-						<a href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})" title="@item.Title">
-							<img src="@item.ImageMediumSize.ValidateImage()" alt='@item.Title' title='@item.Title' class="landscape thumbnail blog2_thumb" width="420" height="330">
-						</a>
-					</div>
-					<div class="col-md-7 omega">
-						<div class="postmetadata">
-							<h6 class="blog-date">
-								<asp:Literal runat="server" ID="ltrDate"></asp:Literal>
-							</h6>
+												</div>
+												<div class="mkdf-post-text-main">
+
+													<h3 itemprop="name" class="entry-title mkdf-post-title">
+														<a itemprop="url" href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})" title="@item.Title">
+															@item.Title
+														</a>
+													</h3>
+													<div class="mkdf-post-excerpt-holder">
+														<p itemprop="description" class="mkdf-post-excerpt">
+															@Html.Raw(item.ShortDesc)
+														</p>
+													</div>
+													<div class="mkdf-post-read-more-button">
+														<a itemprop="url" href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})" target="_self"
+														   class="mkdf-btn mkdf-btn-medium mkdf-btn-simple mkdf-btn-icon mkdf-blog-list-button">
+															<span class="mkdf-btn-text">
+																Tiếp tục
+															</span> <span aria-hidden="true" class="mkdf-icon-font-elegant arrow_carrot-right "></span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+							}
 						</div>
-						<h4>
-							<a href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})" title="@item.Title">
-								@item.Title
-							</a>
-						</h4>
-						<p>
-							<asp:Literal runat="server" ID="ltrBrief"></asp:Literal>
-						</p>
 
-						<div class="portfolio-link">
-							<a href="@Url.Action("NewsDetail", "News", new {seoUrl = item.SeoUrl, area = ""})">
-								@T("XemThem")
-							</a>
+						@{Html.RenderPartial("_PagedLinks");}
+
+						<div class="mkdf-blog-pagination-wp">
 						</div>
 
 					</div>
-					<hr class="vertical-space1">
-				</article>
+				</div>
+				<div class="mkdf-sidebar-holder mkdf-grid-col-4">
+					@Html.Action("MenuNavNews", "MenuNav", new { virtualId = ViewBag.VirtualId, area = "" })
 
-			}
-
-			<!--Padding-->
-			<div class="wp-pagenavi">
-				@{Html.RenderPartial("_PagedLinks");}
+				</div>
 			</div>
-
-			<hr class="vertical-space">
-		</section>
-
-	</section>
+		</div>
+	</div>
 
 }
 <!--/GetNewsByCategory---->

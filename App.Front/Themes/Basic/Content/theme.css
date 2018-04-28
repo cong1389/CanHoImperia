@@ -1501,6 +1501,20 @@ div.jGrowl div.jGrowl-closer:hover {
     display: inline-block;
     line-height: 34px; }
 
+.breadcrumb {
+  font-size: 13px;
+  background: #eee;
+  margin: 0;
+  padding: 0px 5px 0px 0px;
+  line-height: 35px; }
+  .breadcrumb > li {
+    display: inline-block; }
+  .breadcrumb a, .breadcrumb > li + li:before, .breadcrumb > .active, .breadcrumb li:last-child {
+    color: #497236; }
+  .breadcrumb > li + li:before {
+    padding: 0 5px;
+    content: "/\00a0"; }
+
 .btn {
   cursor: pointer;
   display: inline-block;

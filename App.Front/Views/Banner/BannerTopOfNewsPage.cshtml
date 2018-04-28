@@ -1,21 +1,26 @@
 ﻿<!----BannerTopOfNewsPage-->
 
 @using App.Aplication
-@model App.Domain.Entities.Ads.Banner
+@model IEnumerable<App.Domain.Entities.Ads.Banner>
 @if (Model != null)
 {
-    <section id="title-wrapper" style="background-image: url('@(Model.ImgPath.ValidateImage())');">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="title-holder">
-                        <div class="title-holder-cell text-left">
-                            <h2 class="page-title"><span class="text-uppercase">@ViewBag.Title</span></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+	foreach (var item in Model)
+	{
+		<div class="mkdf-title-holder mkdf-centered-with-breadcrumbs-type mkdf-has-bg-image mkdf-bg-parallax" style="height: 400px; background-image: url('@(item.ImgPath.ValidateImage())'); background-position: center 0px;" data-height="400">
+			<div class="mkdf-title-image">
+				<img itemprop="image" src="url('@(item.ImgPath.ValidateImage())')" alt="a">
+			</div>
+			<div class="mkdf-title-wrapper" style="height: 400px">
+				<div class="mkdf-title-inner">
+					<div class="mkdf-grid">
+						<div class="mkdf-title-info">
+							<h1 class="mkdf-page-title entry-title" style="color: #ffffff">@ViewBag.Title</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+
 }
 <!----/BannerTopOfNewsPage-->

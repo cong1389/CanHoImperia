@@ -1,0 +1,20 @@
+﻿ <!---_Footer.Bottom--->
+@model App.Domain.Entities.GlobalSetting.SystemSetting
+
+@if (Model != null)
+{
+	<div class="mkdf-footer-bottom-holder">
+		<div class="mkdf-footer-bottom-inner mkdf-grid">
+			<div class="mkdf-grid-row ">
+				<div class="mkdf-grid-col-12">
+					<div id="text-7" class="widget mkdf-footer-bottom-column-1 widget_text">
+						<div class="textwidget">
+							<p> @Html.Raw(Model.FooterContent) </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+<!---/_Footer.Bottom--->
