@@ -24,7 +24,6 @@ using App.Service.Locations;
 using App.Service.MailSetting;
 using App.Service.Manufacturers;
 using App.Service.Menu;
-using App.Service.Messages;
 using App.Service.News;
 using App.Service.Orders;
 using App.Service.Other;
@@ -85,7 +84,7 @@ namespace App.Framework.Ioc
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
             builder.RegisterType<RoleService>().As<IRoleService>().InstancePerRequest();
             builder.RegisterType<UserStoreService>().As<IUserStoreService>().InstancePerRequest();
-            builder.RegisterType<SendMailService>().As<ISendMailService>().InstancePerRequest();
+            //builder.RegisterType<SendMailService>().As<ISendMailService>().InstancePerRequest();
 
             builder.RegisterType<ImagePlugin>().As<IImagePlugin>().InstancePerRequest();
            
@@ -124,11 +123,11 @@ namespace App.Framework.Ioc
             builder.RegisterType<OrderProcessingService>().As<IOrderProcessingService>().InstancePerRequest();
             builder.RegisterType<PriceCalculationService>().As<IPriceCalculationService>().InstancePerRequest();
 
-	        builder.RegisterType<MessageService>().As<IMessageService>().InstancePerRequest();
+	        //builder.RegisterType<MessageService>().As<IMessageService>().InstancePerRequest();
 
 	        builder.RegisterType<LiquidTemplateEngine>().As<ITemplateEngine>().InstancePerRequest();
             builder.RegisterType<DefaultVirtualPathProvider>().As<IVirtualPathProvider>().InstancePerRequest();
-            builder.RegisterType<MessageModelProvider>().As<IMessageModelProvider>().InstancePerRequest();
+            //builder.RegisterType<MessageModelProvider>().As<IMessageModelProvider>().InstancePerRequest();
             builder.RegisterType<DefaultTemplateManager>().As<ITemplateManager>().InstancePerRequest();
 
         }

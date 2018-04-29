@@ -7,11 +7,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <AssemblyName>App.Core</AssemblyName>
     <OutputType>Library</OutputType>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -61,8 +62,6 @@
     <Compile Include="Caching\MemoryCacheManager.cs" />
     <Compile Include="Caching\MemorySet.cs" />
     <Compile Include="Caching\RequestCache.cs" />
-    <Compile Include="ComponentModel\FastProperty.cs" />
-    <Compile Include="ComponentModel\HybridExpando.cs" />
     <Compile Include="ComponentModel\PropertyBag.cs" />
     <Compile Include="ComponentModel\SerializationUtils.cs" />
     <Compile Include="ComponentModel\TypeConversion\EmailAddressConverter.cs" />

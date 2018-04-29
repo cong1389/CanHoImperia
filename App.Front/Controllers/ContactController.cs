@@ -10,7 +10,6 @@ using App.Front.Models;
 using App.Service.ContactInformation;
 using App.Service.MailSetting;
 using App.Service.Menu;
-using App.Service.Messages;
 using App.Service.SystemApp;
 
 namespace App.Front.Controllers
@@ -19,16 +18,17 @@ namespace App.Front.Controllers
     {
         private readonly IContactInfoService _contactInfoService;
         private readonly ISystemSettingService _systemSettingService;
-        private readonly ISendMailService _sendMailService;
+        //private readonly ISendMailService _sendMailService;
 
         public ContactController(IContactInfoService contactInfoService, IMenuLinkService menuLinkService
             , IMailSettingService mailSettingService
             , ISystemSettingService systemSettingService
-            , ISendMailService sendMailService)
+            //, ISendMailService sendMailService
+            )
         {
             _contactInfoService = contactInfoService;
             _systemSettingService = systemSettingService;
-            _sendMailService = sendMailService;
+            //_sendMailService = sendMailService;
         }
         
         public ActionResult ContactUs()
@@ -111,7 +111,7 @@ namespace App.Front.Controllers
                         Body = bodyNodes
                     };
 
-                     _sendMailService.SendMailSmtp(sendMail);
+                     //_sendMailService.SendMailSmtp(sendMail);
 
                     model.SuccessfullySent = true;
                     model.Result = "Gửi liên hệ thành công, chúng tôi sẽ liên lạc với bạn ngay khi có thể.";

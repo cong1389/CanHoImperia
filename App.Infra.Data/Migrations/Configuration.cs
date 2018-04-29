@@ -8,14 +8,14 @@ using App.Infra.Data.Context;
 
 namespace App.Infra.Data.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<AppContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<App.Infra.Data.Context.AppContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(AppContext context)
+        protected override void Seed(App.Infra.Data.Context.AppContext context)
         {
             var constantsValues = typeof(ApplicationRoles).GetConstantsValues<string>();
             if (constantsValues != null && constantsValues.Any())

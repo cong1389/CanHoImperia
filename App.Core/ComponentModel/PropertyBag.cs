@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace App.Core.ComponentModel
 {
-	/// <summary>
-	/// Creates a serializable string/object dictionary that is XML serializable
-	/// Encodes keys as element names and values as simple values with a type
-	/// attribute that contains an XML type name. Complex names encode the type 
-	/// name with type='___namespace.classname' format followed by a standard xml
-	/// serialized format. The latter serialization can be slow so it's not recommended
-	/// to pass complex types if performance is critical.
-	/// </summary>
-	[XmlRoot("properties")]
+    /// <summary>
+    /// Creates a serializable string/object dictionary that is XML serializable
+    /// Encodes keys as element names and values as simple values with a type
+    /// attribute that contains an XML type name. Complex names encode the type 
+    /// name with type='___namespace.classname' format followed by a standard xml
+    /// serialized format. The latter serialization can be slow so it's not recommended
+    /// to pass complex types if performance is critical.
+    /// </summary>
+    [XmlRoot("properties")]
 	public class PropertyBag : PropertyBag<object>
 	{
 		/// <summary>

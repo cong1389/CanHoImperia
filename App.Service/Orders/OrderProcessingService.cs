@@ -6,19 +6,18 @@ using App.Domain.Common;
 using App.Domain.Orders;
 using App.Service.Customers;
 using App.Service.GenericAttribute;
-using App.Service.Messages;
 using App.Service.Post;
 
 namespace App.Service.Orders
 {
-	public class OrderProcessingService : IOrderProcessingService
+    public class OrderProcessingService : IOrderProcessingService
     {
         private readonly IOrderService _orderService;
         private readonly IShoppingCartItemService _shoppingCartItemService;
         private readonly ICustomerService _customerService;
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly IPriceCalculationService _priceCalculationService;
-        private readonly IMessageService _messageFactory;
+        //private readonly IMessageService _messageFactory;
         private readonly IPostService _postService;
         private readonly IOrderTotalCalculationService _orderTotalCalculationService;
 
@@ -27,7 +26,7 @@ namespace App.Service.Orders
             , ICustomerService customerService
             , IGenericAttributeService genericAttributeService
             , IPriceCalculationService priceCalculationService
-            , IMessageService messageFactory, IPostService postService
+            //, IMessageService messageFactory, IPostService postService
             , IOrderTotalCalculationService orderTotalCalculationService)
         {
             _orderService = orderService;
@@ -35,8 +34,8 @@ namespace App.Service.Orders
             _customerService = customerService;
             _genericAttributeService = genericAttributeService;
             _priceCalculationService = priceCalculationService;
-            _messageFactory = messageFactory;
-            _postService = postService;
+            //_messageFactory = messageFactory;
+            //_postService = postService;
             _orderTotalCalculationService = orderTotalCalculationService;
         }
 
@@ -151,8 +150,8 @@ namespace App.Service.Orders
                     #region Notifications, notes and attributes
 
                     //send email notifications
-                    var msg = _messageFactory.SendOrderPlacedStoreOwnerNotification(order, 1);
-	                msg = _messageFactory.SendOrderPlacedCustomerNotification(order, order.CustomerLanguageId);
+                 //   var msg = _messageFactory.SendOrderPlacedStoreOwnerNotification(order, 1);
+	                //msg = _messageFactory.SendOrderPlacedCustomerNotification(order, order.CustomerLanguageId);
 
 					#endregion
 
