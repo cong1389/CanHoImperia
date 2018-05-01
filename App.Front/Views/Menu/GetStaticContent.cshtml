@@ -3,8 +3,8 @@
 @model App.Domain.Entities.Data.StaticContent
 @if (Model != null)
 {
-    @*@Html.Action("BannerTop", "Banner", new { menuId = ViewBag.BannerId, title = ViewBag.Title })*@
-
+    @Html.Action("BannerTop", "Banner", new { menuId = ViewBag.BannerId, title = ViewBag.Title })
+	@Html.Partial("_BreadCrumb")
 
     if (ViewBag.TemplateType == (int)TemplateContent.FixItem)
     {
@@ -12,9 +12,9 @@
     }
     else
     {
-        <div class="columns-container">
-            <div class="container" id="columns">
-                @Html.Partial("_BreadCrumb")
+        <div class="mkdf-container">
+            <div class="mkdf-container-inner clearfix" id="columns">
+               
 
                 <div class="center_column col-xs-12 col-sm-12" id="center_column">
                     <!-- page heading-->
